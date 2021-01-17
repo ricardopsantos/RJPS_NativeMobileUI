@@ -51,7 +51,9 @@ public struct UIKitFactory {
         }
         if imageURL != nil, let url = URL(string: imageURL!) {
             some.load(url: url)
-            some.contentMode = .scaleToFill
+            //some.contentMode = .scaleToFill
+            some.contentMode = .scaleAspectFit
+            some.layer.masksToBounds = true
             some.height(200)
         }
         return some
