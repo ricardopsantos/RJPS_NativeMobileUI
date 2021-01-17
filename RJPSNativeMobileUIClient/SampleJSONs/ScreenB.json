@@ -1,14 +1,12 @@
 {
   "results": [
     {
-      "id": "",
       "type": "stackViewSection",
       "data": [
         { "key": "text", "value": "Screen B" }
       ]
     },
     {
-      "id": "titleLabel",
       "type": "label",
       "data": [
         { "key": "text", "value": "Welcome to screen B!" },
@@ -16,19 +14,30 @@
       ]
     },
     {
-      "id": "",
       "type": "stackViewSection",
       "data": [
         { "key": "text", "value": "" }
       ]
     },
+    
     {
-      "id": "btnAcceptTermsAndCondictions2",
+      "type": "stackViewSeparator",
+    },
+
+    {
       "type": "button",
       "data": [
         { "key": "text", "value": "Go to Screen A" },
         { "key": "layoutStyle", "value": "primary" },
         { "key": "touchUpInside.selector", "value": "LoadScreen.ScreenA" }
+      ]
+    },
+    {
+      "type": "button",
+      "data": [
+        { "key": "text", "value": "Go to Screen C" },
+        { "key": "layoutStyle", "value": "primary" },
+        { "key": "touchUpInside.selector", "value": "LoadScreen.ScreenC" }
       ]
     }
   ]

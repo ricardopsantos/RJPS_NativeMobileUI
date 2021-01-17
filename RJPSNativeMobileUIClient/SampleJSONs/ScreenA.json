@@ -1,42 +1,41 @@
 {
   "results": [
     {
-      "id": "",
       "type": "stackViewSection",
       "data": [
         { "key": "text", "value": "Screen A" }
       ]
     },
+
     {
-      "id": "titleLabel",
-      "type": "label",
-      "data": [
-        { "key": "text", "value": "Welcome to screen A" },
-        { "key": "layoutStyle", "value": "value" }
-      ]
-    },
-    {
-      "id": "titleLabel",
       "type": "label",
       "data": [
         { "key": "text", "value": "Welcome to screen A" },
         { "key": "layoutStyle", "value": "title" }
       ]
     },
+    
     {
-      "id": "",
       "type": "stackViewSection",
       "data": [
-        { "key": "text", "value": "This arent labels...." }
+        { "key": "text", "value": "" }
       ]
     },
+    
     {
-      "id": "btnAcceptTermsAndCondictions2",
       "type": "button",
       "data": [
         { "key": "text", "value": "Go to Screen B" },
-        { "key": "layoutStyle", "value": "secondary" },
+        { "key": "layoutStyle", "value": "primary" },
         { "key": "touchUpInside.selector", "value": "LoadScreen.ScreenB" }
+      ]
+    },
+    {
+      "type": "button",
+      "data": [
+        { "key": "text", "value": "Go to Screen C" },
+        { "key": "layoutStyle", "value": "primary" },
+        { "key": "touchUpInside.selector", "value": "LoadScreen.ScreenC" }
       ]
     }
   ]

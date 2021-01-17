@@ -6,26 +6,6 @@ import Foundation
 import UIKit
 
 public extension UIStackView {
-
-    func loadWith(models: [ComponentModel]?, base: DynamicViewControllerProtocol) {
-        self.removeAllSubviews()
-        models?.forEach({ (model) in
-            if model.type == .label, let style = UILabel.LayoutStyle(rawValue: model.layoutStyle) {
-                self.addSub(view: UIKitFactory.label(title: model.text, style: style))
-            } else if model.type == .button, let style = UIButton.LayoutStyle(rawValue: model.layoutStyle) {
-                let some = UIKitFactory.button(title: model.text, style: style)
-                if model.touchUpInsideEnabled {
-                    some.isUserInteractionEnabled = true
-                    some.onTouchUpInside { [base] in
-                        base.viewGenericTap(some, model: model)
-                    }
-                }
-                self.addSub(view: some)
-            } else if model.type == .stackViewSection {
-                self.addSection(title: model.text)
-            }
-        })
-    }
     
     func edgeStackViewToSuperView() {
         guard self.superview != nil else {
@@ -48,7 +28,7 @@ public extension UIStackView {
         addSeparator()
     }
     
-    private func add(_ view: UIView) {
+    func add(_ view: UIView) {
         if view.superview == nil {
             self.addArrangedSubview(view)
             view.setNeedsLayout()
@@ -63,9 +43,9 @@ public extension UIStackView {
     // If value=0, will use as separator size will (look) be twice the current
     // stack view separator (trust me)
     @discardableResult
-    func addSeparator(withSize value: CGFloat=0, color: UIColor = .clear, tag: Int? = nil) -> UIView {
+    func addSeparator(withSize value: CGFloat=0, color: UIColor? = .clear, tag: Int? = nil) -> UIView {
         let separator = UIView()
-        separator.backgroundColor = color
+        separator.backgroundColor = color ?? .clear
         if tag != nil {
             separator.tag = tag!
         }

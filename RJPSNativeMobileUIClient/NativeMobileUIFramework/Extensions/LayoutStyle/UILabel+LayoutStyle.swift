@@ -15,7 +15,6 @@ public extension UILabel {
         case title
         case value
         case text
-        case info
         case error
     }
 }
@@ -54,10 +53,6 @@ public extension UILabel {
             self.font            = AppFonts.Styles.captionSmall.rawValue
         }
 
-        let info = {
-            self.textColor       = ComponentColor.onPrimary
-            self.font            = AppFonts.Styles.captionLarge.rawValue
-        }
         switch style {
         case .notApplied         : _ = 1
         case .navigationBarTitle : navigationBarTitle()
@@ -65,7 +60,6 @@ public extension UILabel {
         case .value              : value()
         case .text               : text()
         case .error              : error()
-        case .info               : info()
         }
     }
 }

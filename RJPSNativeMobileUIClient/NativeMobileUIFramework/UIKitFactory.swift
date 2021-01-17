@@ -17,11 +17,10 @@ public enum UIKitViewFactoryElementTag: String {
     case imageView
     case textField
     case label
-    case stackViewSpace
     
     case titleAndValue
     case stackViewSection
-    
+    case stackViewSeparator    
 }
 
 
@@ -44,11 +43,16 @@ public struct UIKitFactory {
         return some
     }
 
-    public static func imageView(image: UIImage? = nil) -> UIImageView {
+    public static func imageView(image: UIImage? = nil, imageURL: String? = nil) -> UIImageView {
         let some = UIImageView()
         some.tag =  UIKitViewFactoryElementTag.imageView.intValue
         if image != nil {
             some.image = image
+        }
+        if imageURL != nil, let url = URL(string: imageURL!) {
+            some.load(url: url)
+            some.contentMode = .scaleToFill
+            some.height(200)
         }
         return some
     }

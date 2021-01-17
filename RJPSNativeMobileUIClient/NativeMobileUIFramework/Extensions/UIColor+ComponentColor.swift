@@ -2,8 +2,6 @@
 //  Created by Ricardo Santos on 17/01/2021.
 //
 
-//swiftlint:disable rule_UIColor_2 rule_UIColor_3
-
 import UIKit
 import Foundation
 
@@ -42,6 +40,6 @@ public extension UIColor {
     static var warning: UIColor { return ColorName.warning.color }
 
     static var accept: UIColor { return ColorName.success.color }
-    static var reject: UIColor { return ColorName.warning.color }
-    static var remind: UIColor { return ColorName.danger.color }
+    static var reject: UIColor { return ColorName.danger.color }
+    static var remind: UIColor { return ColorName.warning.color }
 }

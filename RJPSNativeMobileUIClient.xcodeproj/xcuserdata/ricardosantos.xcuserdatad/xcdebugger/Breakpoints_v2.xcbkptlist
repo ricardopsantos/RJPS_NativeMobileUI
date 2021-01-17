@@ -174,8 +174,8 @@
             filePath = "RJPSNativeMobileUIClient/DynamicVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "viewGenericTap(_:model:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -199,22 +199,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "54BF94DC-A352-4823-A1C7-93207783EE49"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RJPSNativeMobileUIClient/NativeMobileUIFramework/Extensions/UIUtils/UIStackView+UIUtils.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "loadWith(models:base:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "99AB6DF0-834E-4332-A1F3-8EB79E5B4DA6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -222,8 +206,8 @@
             filePath = "RJPSNativeMobileUIClient/DynamicVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "screenJSON()"
             landmarkType = "7">
          </BreakpointContent>
@@ -238,10 +222,106 @@
             filePath = "RJPSNativeMobileUIClient/DynamicVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "load(json:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "01378892-2032-4F7A-B210-453ABB36B084"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RJPSNativeMobileUIClient/NativeMobileUIFramework/ComponentModel/ComponentModel+Getters.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "color"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A455F86C-1B97-4726-A04B-187406B40973"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RJPSNativeMobileUIClient/NativeMobileUIFramework/Extensions/UIView+ComponentModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "loadWith(models:base:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A455F86C-1B97-4726-A04B-187406B40973 - 81d7875876542829"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #2 () -&gt; () in (extension in RJPSNativeMobileUIClient):__C.UIStackView.loadWith(models: Swift.Optional&lt;Swift.Array&lt;RJPSNativeMobileUIClient.ComponentModel&gt;&gt;, base: RJPSNativeMobileUIClient.DynamicViewControllerProtocol) -&gt; ()"
+                  moduleName = "RJPSNativeMobileUIClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ricardosantos/Desktop/GitHub/RJPS_NativeMobileUI/RJPSNativeMobileUIClient/NativeMobileUIFramework/Extensions/UIView+ComponentModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "A455F86C-1B97-4726-A04B-187406B40973 - e57bf30645adefef"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIView) -&gt; () in closure #1 () -&gt; () in closure #2 () -&gt; () in (extension in RJPSNativeMobileUIClient):__C.UIStackView.loadWith(models: Swift.Optional&lt;Swift.Array&lt;RJPSNativeMobileUIClient.ComponentModel&gt;&gt;, base: RJPSNativeMobileUIClient.DynamicViewControllerProtocol) -&gt; ()"
+                  moduleName = "RJPSNativeMobileUIClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ricardosantos/Desktop/GitHub/RJPS_NativeMobileUI/RJPSNativeMobileUIClient/NativeMobileUIFramework/Extensions/UIView+ComponentModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AD7161D1-A150-4684-A8B0-A2CA5F39635E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RJPSNativeMobileUIClient/NativeMobileUIFramework/ComponentModel/ComponentModel+Getters.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "touchUpInsideSelector"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C4BCBA3F-EE6B-4B12-86BE-77D0F14C1CE5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RJPSNativeMobileUIClient/NativeMobileUIFramework/ComponentModel/ComponentModel+Getters.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "ComponentModel"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

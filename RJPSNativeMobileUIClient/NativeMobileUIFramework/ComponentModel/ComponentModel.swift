@@ -4,6 +4,10 @@
 
 import Foundation
 
+struct ComponentModels: Decodable {
+    var results: [ComponentModel]
+}
+
 public enum ComponentDisplayOptionsModel: String {
     case fixedToTop
     case spacer
@@ -16,8 +20,8 @@ public struct ComponentKeyValuesModel : Decodable {
 }
 
 public struct ComponentModel : Decodable {
-    public let id: String
+    public let id: String?
     public let type: UIKitViewFactoryElementTag
     public let displayOptions: [ComponentDisplayOptionsModel: String]?
-    public let data: [ComponentKeyValuesModel]
+    public let data: [ComponentKeyValuesModel]?
 }

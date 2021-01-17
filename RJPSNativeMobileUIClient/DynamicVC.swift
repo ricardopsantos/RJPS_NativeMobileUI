@@ -10,8 +10,6 @@ import Combine
 import TinyConstraints
 import RJSLibUFBase
 
-private var cancelBag = CancelBag()
-
 public protocol DynamicViewControllerProtocol {
     func viewGenericTap(_ sender: UIView, model: ComponentModel)
     func screenJSON() -> String?
@@ -44,7 +42,7 @@ extension DynamicVC: DynamicViewControllerProtocol {
     }
     
     func screenJSON() -> String? {
-        contentOf(jsonFile: "ScreenA")
+        contentOf(jsonFile: "ScreenC")
     }
     
     func viewGenericTap(_ sender: UIView, model: ComponentModel) {
@@ -63,7 +61,11 @@ struct ActionsManager {
                 }
                 dynamicView.load(json: contentOf(jsonFile: screenName))
             }
-            if model.touchUpInsideSelector!.hasPrefix("LoadScreen.") {
+            guard let touchUpInsideSelector = model.touchUpInsideSelector else {
+                // No actions for button
+                return
+            }
+            if touchUpInsideSelector.hasPrefix("LoadScreen.") {
                 handleLoadScreen(touchUpInsideSelector: model.touchUpInsideSelector!)
             }
         }

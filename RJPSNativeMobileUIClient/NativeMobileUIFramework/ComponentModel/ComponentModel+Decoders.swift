@@ -48,7 +48,7 @@ extension UIKitViewFactoryElementTag: Codable {
         case .imageView: return start + 5
         case .textField: return start + 6
         case .label: return start + 7
-        case .stackViewSpace: return start + 8
+        case .stackViewSeparator: return start + 8
         case .titleAndValue: return start + 9
         case .stackViewSection: return start + 10
         }

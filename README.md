@@ -17,6 +17,14 @@
 
 Inspired on [Implementing native UI from scratch using JSON](https://www.farfetchtechblog.com/en/blog/post/implementing-native-ui-from-scratch-using-json/) I decided to give it a try and see how far could I go. 
 
+## Version 1.3.0
+
+<video width="320" height="240" controls>
+  <source src="video.mov" type="video/mp4">
+</video>
+
+Image view supoort
+
 ## Version 1.2.0
 
 ✅ Adding UI elements on vertical layouts 
@@ -25,7 +33,7 @@ Inspired on [Implementing native UI from scratch using JSON](https://www.farfetc
 
 ✅ UI elements with user interactions  (only for buttons)
 
-✅ Hability to have multiple screens and load then
+✅ Ability to have multiple screens and load then
 
 ❌ Add relative layout option (on road map)
 
