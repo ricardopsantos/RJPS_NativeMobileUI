@@ -15,53 +15,44 @@
 
 ## About
 
-Inspired on [Implementing native UI from scratch using JSON](https://www.farfetchtechblog.com/en/blog/post/implementing-native-ui-from-scratch-using-json/) I decided to give it a try and see how far could I go. 
+_"Our framework enables us to specify our screen layouts using a common declarative language that can be understood by everyone - in this case JSON. Based on that declaration, it converts that definition of components into native code, rendering our design system components"_ 
+
+Inspired by these words on [Implementing native UI from scratch using JSON](https://www.farfetchtechblog.com/en/blog/post/implementing-native-ui-from-scratch-using-json/), I decided to give it a try and see how far could I go. 
+
+## Current features
+
+✅ Add elements on a vertical layout.
+
+✅ Add elements with properties and styles.
+
+✅ Elements support user interactions (now, only for buttons).
+
+✅ Ability to have multiple screens.
+
+❌ Add relative layout option (on roadmap)
 
 ## Version 1.3.0
 
-<video width="320" height="240" controls>
-  <source src="video.mov" type="video/mp4">
-</video>
+* Added ImageView support
 
-Image view supoort
+![image](Images/version1.3.0.gif)
 
 ## Version 1.2.0
 
-✅ Adding UI elements on vertical layouts 
-
-✅ UI elements with properties and styles
-
-✅ UI elements with user interactions  (only for buttons)
-
-✅ Ability to have multiple screens and load then
-
-❌ Add relative layout option (on road map)
-
+* Ability to have multiple screens and load then
 
 ![image](Images/version1.2.0.gif)
 
 ## Version 1.1.0
 
-✅ Adding UI elements on vertical layouts
-
-✅ UI elements with properties and styles
-
-✅ UI elements with user interactions  (only for buttons)
-
-❌ Add relative layout option (on road map)
-
+* UI elements with user interactions  (only for buttons)
 
 ![image](Images/version1.1.0.png)
 
 ## Version 1.0.0
 
-✅ Adding UI elements on vertical layouts
-
-✅ UI elements with properties and styles
-
-❌ UI elements with user interactions  (on road map)
-
-❌ Add relative layout option (on road map)
+* Adding UI elements on vertical layouts
+* UI elements with properties and styles
 
 ![image](Images/version1.0.0.png)
 
