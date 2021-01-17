@@ -27,79 +27,40 @@ class DynamicVC: UIViewController {
         
         self.view.addAndSetup(scrollView: scrollView, stackViewV: stackViewVLevel1, hasTopBar: true)
 
-        let json = """
-                    {
-                      "results": [
-                        {
-                          "id": "",
-                          "type": "stackViewSection",
-                          "data": [
-                            { "key": "text", "value": "This are labels...." }
-                          ]
-                        },
-                        {
-                          "id": "titleLabel",
-                          "type": "label",
-                          "data": [
-                            { "key": "text", "value": "Im a title" },
-                            { "key": "layoutStyle", "value": "title" }
-                          ]
-                        },
-                        {
-                          "id": "titleLabel",
-                          "type": "label",
-                          "data": [
-                            { "key": "text", "value": "Im a value" },
-                            { "key": "layoutStyle", "value": "value" }
-                          ]
-                        },
-                        {
-                          "id": "",
-                          "type": "stackViewSection",
-                          "data": [
-                            { "key": "text", "value": "This arent labels...." }
-                          ]
-                        },
-                        {
-                          "id": "btnAcceptTermsAndCondictions",
-                          "type": "button",
-                          "data": [
-                            { "key": "text", "value": "I'll accept" },
-                            { "key": "layoutStyle", "value": "accept" }
-                          ]
-                        },
-                        {
-                          "id": "btnAcceptTermsAndCondictions",
-                          "type": "button",
-                          "data": [
-                            { "key": "text", "value": "Im a accept" },
-                            { "key": "layoutStyle", "value": "primary" }
-                          ]
-                        },
-                        {
-                          "id": "btnAcceptTermsAndCondictions",
-                          "type": "button",
-                          "data": [
-                            { "key": "text", "value": "Im secondary" },
-                            { "key": "layoutStyle", "value": "secondary" }
-                          ]
-                        }
-                      ]
-                    }
-        """
-       // let models = NMUIModel.loadWith(json: json)
         let models = ComponentModel.loadWith(file: "JSON_1")
-
-
+        
         models?.forEach({ (model) in
             if model.type == .label, let style = UILabel.LayoutStyle(rawValue: model.layoutStyle) {
                 stackViewVLevel1.addSub(view: UIKitFactory.label(title: model.text, style: style))
             } else if model.type == .button, let style = UIButton.LayoutStyle(rawValue: model.layoutStyle) {
-                stackViewVLevel1.addSub(view: UIKitFactory.button(title: model.text, style: style))
+                let some = UIKitFactory.button(title: model.text, style: style)
+                if model.touchUpInsideEnabled {
+                    some.isUserInteractionEnabled = true
+                    some.onTouchUpInside {  [weak self] in
+                        self?.viewGenericTap(some, model: model)
+                    }
+                }
+                stackViewVLevel1.addSub(view: some)
             } else if model.type == .stackViewSection {
                 stackViewVLevel1.addSection(title: model.text)
             }
         })
+    }
+    
+    func viewGenericTap(_ sender: UIView, model: ComponentModel) {
+        //print(sender)
+        //print(model)
+        let message = "The [\(model.id)] wants to perform [\(model.touchUpInsideSelector!)]\n\n[\(model)]"
+        let dialogMessage = UIAlertController(title: "Just do it!",
+                                              message: message,
+                                              preferredStyle: .alert)
+
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            print("Ok button tapped")
+         })
+
+        dialogMessage.addAction(okAction)
+        self.present(dialogMessage, animated: true, completion: nil)
     }
 
 }

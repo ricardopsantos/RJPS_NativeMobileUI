@@ -31,27 +31,30 @@
       ]
     },
     {
-      "id": "btnAcceptTermsAndCondictions",
+      "id": "btnAcceptTermsAndCondictions1",
       "type": "button",
       "data": [
         { "key": "text", "value": "I'll accept" },
-        { "key": "layoutStyle", "value": "accept" }
+        { "key": "layoutStyle", "value": "accept" },
+        { "key": "touchUpInside.selector", "value": "AcceptTermsAndCondictions 1" }
       ]
     },
     {
-      "id": "btnAcceptTermsAndCondictions",
+      "id": "btnAcceptTermsAndCondictions2",
       "type": "button",
       "data": [
         { "key": "text", "value": "Im a accept" },
-        { "key": "layoutStyle", "value": "primary" }
+        { "key": "layoutStyle", "value": "primary" },
+        { "key": "touchUpInside.selector", "value": "AcceptTermsAndCondictions 2" }
       ]
     },
     {
-      "id": "btnAcceptTermsAndCondictions",
+      "id": "btnAcceptTermsAndCondictions3",
       "type": "button",
       "data": [
         { "key": "text", "value": "Im secondary" },
-        { "key": "layoutStyle", "value": "secondary" }
+        { "key": "layoutStyle", "value": "secondary" },
+        { "key": "touchUpInside.selector", "value": "AcceptTermsAndCondictions 3" }
       ]
     }
   ]
