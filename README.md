@@ -35,6 +35,8 @@ Inspired by these words I read at [Implementing native UI from scratch using JSO
 
 * Added ImageView support
 
+![image](Images/version1.3.0.png)
+
 ![image](Images/version1.3.0.gif)
 
 ## Version 1.2.0
