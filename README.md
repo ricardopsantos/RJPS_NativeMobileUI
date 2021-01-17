@@ -17,16 +17,29 @@
 
 Inspired on [Implementing native UI from scratch using JSON](https://www.farfetchtechblog.com/en/blog/post/implementing-native-ui-from-scratch-using-json/)
 
-## Version 1.0
+## Version 1.1.0
 
 ✅ Adding UI elements on vertical layouts
 
 ✅ UI elements with properties and styles
 
-❌ UI elements with user interactions (on road map)
+✅ UI elements with user interactions  (on for buttons)
+
+❌ Add relative layout option (on road map)
+
+
+![image](Images/version1.1.0.png)
+
+## Version 1.0.0
+
+✅ Adding UI elements on vertical layouts
+
+✅ UI elements with properties and styles
 
 ❌ UI elements with user interactions  (on road map)
 
-![image](Images/version1.png)
+❌ Add relative layout option (on road map)
+
+![image](Images/version1.0.0.png)
 
 
