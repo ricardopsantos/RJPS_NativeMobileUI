@@ -50,15 +50,6 @@ private extension UIButton {
         addShadow(shadowType: .regular)
     }
 
-    func applyStyleInngage() {
-        applySharedProperties()
-        self.titleLabel?.font = UIButton.defaultFont
-        self.backgroundColor  = ComponentColor.UIButton.backgroundColorInnGage
-        self.setTextColorForAllStates(ComponentColor.UIButton.textColorInnGage)
-        self.layer.cornerRadius = 10.0
-        self.clipsToBounds      = true
-    }
-
     func applyStyleAccept() {
         applySharedProperties()
         self.titleLabel?.font = UIButton.defaultFont

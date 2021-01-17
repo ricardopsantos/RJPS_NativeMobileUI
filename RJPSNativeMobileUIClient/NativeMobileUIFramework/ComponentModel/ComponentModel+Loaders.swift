@@ -5,7 +5,8 @@
 import Foundation
 
 extension ComponentModel {
-    static func loadWith(json: String) -> [ComponentModel]? {
+    static func loadWith(json: String?) -> [ComponentModel]? {
+        guard let json = json else { return nil }
         do {
             let data = json.data(using: .utf8, allowLossyConversion: false)!
             let jsonData = try JSONDecoder().decode(ComponentModels.self, from: data)
@@ -17,10 +18,9 @@ extension ComponentModel {
     }
     
     static func loadWith(file: String) -> [ComponentModel]? {
-        guard let fileURL = Bundle.main.url(forResource: file, withExtension: "json"),
-              let fileContents = try? String(contentsOf: fileURL) else {
-                return nil
-            }
+        guard let fileContents = contentOf(jsonFile: file) else {
+            return nil
+        }
         return loadWith(json: fileContents)
     }
 }

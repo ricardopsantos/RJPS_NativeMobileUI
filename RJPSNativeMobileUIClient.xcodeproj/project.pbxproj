@@ -34,9 +34,10 @@
 		D79E41FF25B43FF400674A2A /* UIStackView+UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E41FE25B43FF400674A2A /* UIStackView+UIUtils.swift */; };
 		D79E420525B4403500674A2A /* UIScrollView+UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E420425B4403500674A2A /* UIScrollView+UIUtils.swift */; };
 		D79E420925B4408000674A2A /* UIButton+LayoutStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E420825B4408000674A2A /* UIButton+LayoutStyle.swift */; };
-		D79E420D25B44B2800674A2A /* JSON_1.json in Resources */ = {isa = PBXBuildFile; fileRef = D79E420C25B44B2800674A2A /* JSON_1.json */; };
+		D79E420D25B44B2800674A2A /* ScreenA.json in Resources */ = {isa = PBXBuildFile; fileRef = D79E420C25B44B2800674A2A /* ScreenA.json */; };
 		D7AB55F325B46CD100CB21D3 /* ComponentModel+Loaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB55F225B46CD100CB21D3 /* ComponentModel+Loaders.swift */; };
 		D7AB55F825B46D9B00CB21D3 /* ComponentModel+Getters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB55F725B46D9B00CB21D3 /* ComponentModel+Getters.swift */; };
+		D7AB560225B48CCA00CB21D3 /* ScreenB.json in Resources */ = {isa = PBXBuildFile; fileRef = D7AB560125B48CCA00CB21D3 /* ScreenB.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,9 +64,10 @@
 		D79E41FE25B43FF400674A2A /* UIStackView+UIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+UIUtils.swift"; sourceTree = "<group>"; };
 		D79E420425B4403500674A2A /* UIScrollView+UIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+UIUtils.swift"; sourceTree = "<group>"; };
 		D79E420825B4408000674A2A /* UIButton+LayoutStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+LayoutStyle.swift"; sourceTree = "<group>"; };
-		D79E420C25B44B2800674A2A /* JSON_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JSON_1.json; sourceTree = "<group>"; };
+		D79E420C25B44B2800674A2A /* ScreenA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ScreenA.json; sourceTree = "<group>"; };
 		D7AB55F225B46CD100CB21D3 /* ComponentModel+Loaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ComponentModel+Loaders.swift"; sourceTree = "<group>"; };
 		D7AB55F725B46D9B00CB21D3 /* ComponentModel+Getters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ComponentModel+Getters.swift"; sourceTree = "<group>"; };
+		D7AB560125B48CCA00CB21D3 /* ScreenB.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ScreenB.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +194,8 @@
 		D7AB55F025B46BAE00CB21D3 /* SampleJSONs */ = {
 			isa = PBXGroup;
 			children = (
-				D79E420C25B44B2800674A2A /* JSON_1.json */,
+				D79E420C25B44B2800674A2A /* ScreenA.json */,
+				D7AB560125B48CCA00CB21D3 /* ScreenB.json */,
 			);
 			path = SampleJSONs;
 			sourceTree = "<group>";
@@ -267,8 +270,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D73FB5B125B03032004F63EE /* LaunchScreen.storyboard in Resources */,
-				D79E420D25B44B2800674A2A /* JSON_1.json in Resources */,
+				D79E420D25B44B2800674A2A /* ScreenA.json in Resources */,
 				D73FB5AE25B03032004F63EE /* Assets.xcassets in Resources */,
+				D7AB560225B48CCA00CB21D3 /* ScreenB.json in Resources */,
 				D73FB5AC25B03031004F63EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

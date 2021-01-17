@@ -8,8 +8,15 @@ import CryptoKit
 import Combine
 //
 import TinyConstraints
+import RJSLibUFBase
 
 private var cancelBag = CancelBag()
+
+public protocol DynamicViewControllerProtocol {
+    func viewGenericTap(_ sender: UIView, model: ComponentModel)
+    func screenJSON() -> String?
+    func load(json: String?)
+}
 
 class DynamicVC: UIViewController {
             
@@ -21,46 +28,44 @@ class DynamicVC: UIViewController {
         UIKitFactory.stackView(axis: .vertical)
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view.addAndSetup(scrollView: scrollView, stackViewV: stackViewVLevel1, hasTopBar: true)
+        let models = ComponentModel.loadWith(json: screenJSON())
+        stackViewVLevel1.loadWith(models: models, base: self)
+    }
+}
 
-        let models = ComponentModel.loadWith(file: "JSON_1")
-        
-        models?.forEach({ (model) in
-            if model.type == .label, let style = UILabel.LayoutStyle(rawValue: model.layoutStyle) {
-                stackViewVLevel1.addSub(view: UIKitFactory.label(title: model.text, style: style))
-            } else if model.type == .button, let style = UIButton.LayoutStyle(rawValue: model.layoutStyle) {
-                let some = UIKitFactory.button(title: model.text, style: style)
-                if model.touchUpInsideEnabled {
-                    some.isUserInteractionEnabled = true
-                    some.onTouchUpInside {  [weak self] in
-                        self?.viewGenericTap(some, model: model)
-                    }
-                }
-                stackViewVLevel1.addSub(view: some)
-            } else if model.type == .stackViewSection {
-                stackViewVLevel1.addSection(title: model.text)
-            }
-        })
+extension DynamicVC: DynamicViewControllerProtocol {
+    
+    func load(json: String?) {
+        let models = ComponentModel.loadWith(json: json)
+        stackViewVLevel1.loadWith(models: models, base: self)
+    }
+    
+    func screenJSON() -> String? {
+        contentOf(jsonFile: "ScreenA")
     }
     
     func viewGenericTap(_ sender: UIView, model: ComponentModel) {
-        //print(sender)
-        //print(model)
-        let message = "The [\(model.id)] wants to perform [\(model.touchUpInsideSelector!)]\n\n[\(model)]"
-        let dialogMessage = UIAlertController(title: "Just do it!",
-                                              message: message,
-                                              preferredStyle: .alert)
-
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-            print("Ok button tapped")
-         })
-
-        dialogMessage.addAction(okAction)
-        self.present(dialogMessage, animated: true, completion: nil)
+        ActionsManager.handleAction(sender, model: model, dynamicView: self)
     }
 
+}
+
+struct ActionsManager {
+    private init() { }
+    static func handleAction(_ sender: UIView, model: ComponentModel, dynamicView: DynamicViewControllerProtocol) {
+        (sender as! UIButton).bumpAndPerform {
+            func handleLoadScreen(touchUpInsideSelector: String) {
+                guard let screenName = touchUpInsideSelector.split(by: ".").last else {
+                    return
+                }
+                dynamicView.load(json: contentOf(jsonFile: screenName))
+            }
+            if model.touchUpInsideSelector!.hasPrefix("LoadScreen.") {
+                handleLoadScreen(touchUpInsideSelector: model.touchUpInsideSelector!)
+            }
+        }
+    }
 }

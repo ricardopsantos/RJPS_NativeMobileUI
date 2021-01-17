@@ -7,6 +7,26 @@ import UIKit
 
 public extension UIStackView {
 
+    func loadWith(models: [ComponentModel]?, base: DynamicViewControllerProtocol) {
+        self.removeAllSubviews()
+        models?.forEach({ (model) in
+            if model.type == .label, let style = UILabel.LayoutStyle(rawValue: model.layoutStyle) {
+                self.addSub(view: UIKitFactory.label(title: model.text, style: style))
+            } else if model.type == .button, let style = UIButton.LayoutStyle(rawValue: model.layoutStyle) {
+                let some = UIKitFactory.button(title: model.text, style: style)
+                if model.touchUpInsideEnabled {
+                    some.isUserInteractionEnabled = true
+                    some.onTouchUpInside { [base] in
+                        base.viewGenericTap(some, model: model)
+                    }
+                }
+                self.addSub(view: some)
+            } else if model.type == .stackViewSection {
+                self.addSection(title: model.text)
+            }
+        })
+    }
+    
     func edgeStackViewToSuperView() {
         guard self.superview != nil else {
             return

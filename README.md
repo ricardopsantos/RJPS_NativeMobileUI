@@ -15,7 +15,22 @@
 
 ## About
 
-Inspired on [Implementing native UI from scratch using JSON](https://www.farfetchtechblog.com/en/blog/post/implementing-native-ui-from-scratch-using-json/) I decided to give it a try and see how far could i go. 
+Inspired on [Implementing native UI from scratch using JSON](https://www.farfetchtechblog.com/en/blog/post/implementing-native-ui-from-scratch-using-json/) I decided to give it a try and see how far could I go. 
+
+## Version 1.2.0
+
+✅ Adding UI elements on vertical layouts 
+
+✅ UI elements with properties and styles
+
+✅ UI elements with user interactions  (only for buttons)
+
+✅ Hability to have multiple screens and load then
+
+❌ Add relative layout option (on road map)
+
+
+![image](Images/version1.2.0.gif)
 
 ## Version 1.1.0
 
