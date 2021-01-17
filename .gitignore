@@ -1,0 +1,8 @@
+.DS_Store
+
+/RJPSNativeMobileUIClient/Packages/*
+/RJPSNativeMobileUIClient/xcuserdata/*
+/RJPSNativeMobileUIClient/DerivedData/*
+/RJPSNativeMobileUIClient/.build
+/RJPSNativeMobileUIClient/.swiftpm
+/RJPSNativeMobileUIClient/.DS_Store
