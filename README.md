@@ -15,7 +15,7 @@
 
 ## About
 
-Inspired on [Implementing native UI from scratch using JSON](https://www.farfetchtechblog.com/en/blog/post/implementing-native-ui-from-scratch-using-json/)
+Inspired on [Implementing native UI from scratch using JSON](https://www.farfetchtechblog.com/en/blog/post/implementing-native-ui-from-scratch-using-json/) I decided to give it a try and see how far could i go. 
 
 ## Version 1.1.0
 
@@ -23,7 +23,7 @@ Inspired on [Implementing native UI from scratch using JSON](https://www.farfetc
 
 ✅ UI elements with properties and styles
 
-✅ UI elements with user interactions  (on for buttons)
+✅ UI elements with user interactions  (only for buttons)
 
 ❌ Add relative layout option (on road map)
 
