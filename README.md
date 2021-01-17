@@ -17,7 +17,7 @@
 
 _"Our framework enables us to specify our screen layouts using a common declarative language that can be understood by everyone - in this case JSON. Based on that declaration, it converts that definition of components into native code, rendering our design system components"_ 
 
-Inspired by these words on [Implementing native UI from scratch using JSON](https://www.farfetchtechblog.com/en/blog/post/implementing-native-ui-from-scratch-using-json/), I decided to give it a try and see how far could I go. 
+Inspired by these words I read at [Implementing native UI from scratch using JSON](https://www.farfetchtechblog.com/en/blog/post/implementing-native-ui-from-scratch-using-json/), I decided to give it a try and see how far could I go. 
 
 ## Current features
 
