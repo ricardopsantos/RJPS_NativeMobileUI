@@ -33,7 +33,7 @@ Inspired by these words I read at [Implementing native UI from scratch using JSO
 ## Version 1.4.0
 
 * Added push and dismiss screen support.
-* Generial bug fixs.
+* General bug fixs.
 * Code re-engerier.
 
 ![image](Images/version1.4.0.png)
