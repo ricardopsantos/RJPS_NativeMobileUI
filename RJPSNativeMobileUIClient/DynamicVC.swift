@@ -11,8 +11,25 @@ import TinyConstraints
 import RJSLibUFBase
 
 class DynamicVC: DynamicBaseVC {
-    override func screenJSONFileName() -> String? { return "ScreenC" }
+    override func screenJSONFileName() -> String? { return "ScreenA" }
     override func base() -> DynamicViewControllerProtocol { self }
+    
+    var newJSON: String?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.backgroundColor = .white
+        
+        if newJSON != nil {
+            load(json: newJSON)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //
+    }
 }
 
 extension DynamicVC: DynamicViewControllerProtocol {
@@ -22,6 +39,6 @@ extension DynamicVC: DynamicViewControllerProtocol {
     }
     
     func viewGenericTap(_ sender: UIView, model: ComponentModel) {
-        ActionsManager.handleAction(sender, model: model, dynamicView: self)
+        ActionsManager.handleGesture(sender, model: model, dynamicView: self)
     }
 }

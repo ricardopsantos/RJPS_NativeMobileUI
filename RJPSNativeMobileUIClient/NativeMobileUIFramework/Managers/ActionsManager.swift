@@ -8,30 +8,57 @@ import UIKit
 struct ActionsManager {
     private init() { }
     
-    static func handleAction(_ sender: UIView, model: ComponentModel, dynamicView: DynamicViewControllerProtocol) {
-
-        guard let button = sender as? UIButton else { fatalError("Precondiction failed") }
+    static func handleGesture(_ sender: UIView, model: ComponentModel, dynamicView: DynamicViewControllerProtocol) {
         
-        button.bumpAndPerform {
+        guard let button = sender as? UIButton else { fatalError("Precondiction failed") }
 
-            if let action = ActionsTargets(rawValue: model.actionType ?? "") {
-                switch action {
-                case .self: _ = () // future....
-                case .newViewController: handleLoadScreen(model: model, dynamicView: dynamicView)
+        if model.action?.gesture == .touch_up_inside {
+            button.bumpAndPerform {
+                if model.action?.type == .loadScreen {
+                    handleLoadScreen(model: model, dynamicView: dynamicView)
+                } else if model.action?.type == .pushScreen {
+                    handlePushScreen(model: model, dynamicView: dynamicView)
+                } else if model.action?.type == .presentScreen {
+                    handlePresentScreen(model: model, dynamicView: dynamicView)
+                } else if model.action?.type == .dismissMe {
+                    handleDismissScreen(model: model, dynamicView: dynamicView)
                 }
-            } else {
-                fatalError("invalid action [\(model)]")
             }
-            
         }
+
     }
 }
 
 private extension ActionsManager {
     
     static func handleLoadScreen(model: ComponentModel, dynamicView: DynamicViewControllerProtocol) {
-        let screenName = model.actionTarget
+        guard let screenName = model.action?.params, !screenName.trim.isEmpty else { fatalError("Precondiction failed") }
         dynamicView.load(json: contentOf(jsonFile: screenName))
+    }
+    
+    static func handlePushScreen(model: ComponentModel, dynamicView: DynamicViewControllerProtocol) {
+        guard let screenName = model.action?.params, !screenName.trim.isEmpty else { fatalError("Precondiction failed") }
+        let viewController = DynamicVC()
+        viewController.newJSON = contentOf(jsonFile: screenName)
+        (dynamicView as! UIViewController).present(viewController, animated: true) {
+            
+        }
+    }
+    
+    static func handlePresentScreen(model: ComponentModel, dynamicView: DynamicViewControllerProtocol) {
+        guard let screenName = model.action?.params, !screenName.trim.isEmpty else { fatalError("Precondiction failed") }
+        dynamicView.load(json: contentOf(jsonFile: screenName))
+        let viewController = DynamicVC()
+        viewController.newJSON = contentOf(jsonFile: screenName)
+        (dynamicView as! UIViewController).present(viewController, animated: true) {
+            
+        }
+    }
+    
+    static func handleDismissScreen(model: ComponentModel, dynamicView: DynamicViewControllerProtocol) {
+        (dynamicView as! UIViewController).dismiss(animated: true) {
+            
+        }
     }
     
 }

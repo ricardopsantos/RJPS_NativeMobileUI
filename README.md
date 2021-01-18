@@ -16,7 +16,7 @@ _"Our framework enables us to specify our screen layouts using a common declarat
 
 Inspired by these words I read at [Implementing native UI from scratch using JSON](https://www.farfetchtechblog.com/en/blog/post/implementing-native-ui-from-scratch-using-json/), I decided to give it a try and see how far could I go. 
 
-## Current features
+## Current capabilities
 
 ✅ Add elements on a vertical layout.
 
@@ -24,29 +24,101 @@ Inspired by these words I read at [Implementing native UI from scratch using JSO
 
 ✅ Elements support user interactions (now, only for buttons).
 
-✅ Ability to have multiple screens.
+✅ Added push and dismiss screen support.
 
-❌ Add relative/orizontal layout options (on roadmap)
+❌ Add relative/horizontal layout options (on roadmap)
 
 ❌ Add input fields support (on roadmap)
 
-## Version 1.3.0
+## Version 1.4.0
+
+* Added push and dismiss screen support.
+* Generial bug fixs.
+* Code re-engerier.
+
+![image](Images/version1.4.0.png)
+
+![image](Images/version1.4.0.gif)
+
+## JSON Sampes
+
+__Sections__
+
+```json
+{ 
+  "type": "stackViewSection",
+  "data": [{"key": "text", "value": "Section title"}]
+}
+```
+
+```json
+{ 
+  "type": "stackViewSection"
+}
+```
+
+__Vertical Space__
+
+```json
+{
+  "type": "stackViewSeparator",
+  "data": [{"key": "height","value": "0"}]
+}
+```
+
+__UILabel__
+
+```json
+{
+  "type": "label",
+    "data": [
+      {"key": "text", "value": "I'm a title"},
+      {"key": "layoutStyle", "value": "title" }
+    ]
+}
+```
+
+__UIImageView__
+
+```json
+{
+  "type": "imageView",
+  "data": [{"key": "url", "value": "https://cdn.vox-cdn.com/thumbor/zEZJzZFEXm23z-Iw9ESls2jYFYA=/89x0:1511x800/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/55717463/google_ai_photography_street_view_2.0.jpg"}]
+}
+```
+
+__Button__
+
+```json
+{
+  "type": "button",
+  "data": [
+    {"key": "layoutStyle", "value": "primary"},
+    {"key": "text", "value": "Present next screen"}
+  ],
+  "action": {
+    "gesture": "touch_up_inside",
+    "type": "presentScreen",
+    "data": [{"key": "params", "value": "ScreenC"}]}
+  }
+```
+
+
+## Old versions
+
+### Version 1.3.0
 
 * Added ImageView support.
 
-![image](Images/version1.3.0.png)
-
-![image](Images/version1.3.0.gif)
-
-## Version 1.2.0
+### Version 1.2.0
 
 * Ability to have multiple screens and load then.
 
-## Version 1.1.0
+### Version 1.1.0
 
 * UI elements with user interactions  (only for buttons)
 
-## Version 1.0.0
+### Version 1.0.0
 
 * Adding UI elements on vertical layouts.
 * UI elements with properties and styles.

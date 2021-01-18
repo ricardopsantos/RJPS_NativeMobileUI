@@ -1,42 +1,141 @@
-{
-  "results": [
-    {
-      "type": "stackViewSection",
+[
+  {
+    "type": "stackViewSection",
+    "data": [
+      {
+        "key": "text",
+        "value": "Diferent type of labels support..."
+      }
+    ]
+  },
+  {
+    "type": "label",
+    "data": [
+      {
+        "key": "text",
+        "value": "title"
+      },
+      {
+        "key": "layoutStyle",
+        "value": "title"
+      }
+    ]
+  },
+  {
+    "type": "label",
+    "data": [
+      {
+        "key": "text",
+        "value": "value"
+      },
+      {
+        "key": "layoutStyle",
+        "value": "value"
+      }
+    ]
+  },
+  {
+    "type": "label",
+    "data": [
+      {
+        "key": "text",
+        "value": "text"
+      },
+      {
+        "key": "layoutStyle",
+        "value": "text"
+      }
+    ]
+  },
+  {
+    "type": "label",
+    "data": [
+      {
+        "key": "text",
+        "value": "error"
+      },
+      {
+        "key": "layoutStyle",
+        "value": "error"
+      }
+    ]
+  },
+  {
+    "type": "stackViewSection",
+    "data": [
+      {
+        "key": "text",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "type": "button",
+    "data": [
+      {
+        "key": "layoutStyle",
+        "value": "primary"
+      },
+      {
+        "key": "text",
+        "value": "Load next screen"
+      }
+    ],
+    "action": {
+      "gesture": "touch_up_inside",
+      "type": "loadScreen",
       "data": [
-        { "key": "text", "value": "Screen B" }
-      ]
-    },
-    {
-      "type": "label",
-      "data": [
-        { "key": "text", "value": "Welcome to screen B!" },
-        { "key": "layoutStyle", "value": "title" }
-      ]
-    },
-    {
-      "type": "stackViewSection",
-      "data": [
-        { "key": "text", "value": "" }
-      ]
-    },
-    
-    {
-      "type": "stackViewSeparator",
-    },
-
-    {
-      "type": "button",
-      "data": [
-        { "key": "text", "value": "Go to Screen A" },
-        { "key": "layoutStyle", "value": "primary" }
-      ]
-    },
-    {
-      "type": "button",
-      "data": [
-        { "key": "text", "value": "Go to Screen C" },
-        { "key": "layoutStyle", "value": "primary" }
+        {
+          "key": "params",
+          "value": "ScreenC"
+        }
       ]
     }
-  ]
-}
+  },
+  {
+    "type": "button",
+    "data": [
+      {
+        "key": "layoutStyle",
+        "value": "primary"
+      },
+      {
+        "key": "text",
+        "value": "Present next screen"
+      }
+    ],
+    "action": {
+      "gesture": "touch_up_inside",
+      "type": "presentScreen",
+      "data": [
+        {
+          "key": "params",
+          "value": "ScreenC"
+        }
+      ]
+    }
+  },
+  {
+    "type": "button",
+    "data": [
+      {
+        "key": "layoutStyle",
+        "value": "primary"
+      },
+      {
+        "key": "text",
+        "value": "Dismiss me"
+      }
+    ],
+    "action": {
+      "gesture": "touch_up_inside",
+      "type": "dismissMe",
+      "data": [
+        {
+          "key": "params",
+          "value": ""
+        }
+      ]
+    }
+  }
+]

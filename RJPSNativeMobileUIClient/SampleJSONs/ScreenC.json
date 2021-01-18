@@ -1,128 +1,167 @@
-{
-  "results": [
-      
+[
+  {
+    "type": "stackViewSection",
+    "data": [
       {
-        "type": "imageView",
-        "data": [ { "key": "url", "value": "https://cdn.vox-cdn.com/thumbor/zEZJzZFEXm23z-Iw9ESls2jYFYA=/89x0:1511x800/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/55717463/google_ai_photography_street_view_2.0.jpg" } ]
+        "key": "text",
+        "value": "Diferent type of buttons support..."
+      }
+    ]
+  },
+  {
+    "type": "button",
+    "data": [
+      {
+        "key": "layoutStyle",
+        "value": "primary"
       },
-      
-    {
-      "type": "stackViewSection",
-      "data": [ { "key": "text", "value": "This is a section with a title" } ]
-    },
-    
-    
-    {
-      "type": "label",
+      {
+        "key": "text",
+        "value": "primary"
+      }
+    ]
+  },
+  {
+    "type": "button",
+    "data": [
+      {
+        "key": "layoutStyle",
+        "value": "secondary"
+      },
+      {
+        "key": "text",
+        "value": "secondary"
+      }
+    ]
+  },
+  {
+    "type": "button",
+    "data": [
+      {
+        "key": "layoutStyle",
+        "value": "accept"
+      },
+      {
+        "key": "text",
+        "value": "accept"
+      }
+    ]
+  },
+  {
+    "type": "button",
+    "data": [
+      {
+        "key": "layoutStyle",
+        "value": "reject"
+      },
+      {
+        "key": "text",
+        "value": "reject"
+      }
+    ]
+  },
+  {
+    "type": "button",
+    "data": [
+      {
+        "key": "layoutStyle",
+        "value": "accept"
+      },
+      {
+        "key": "text",
+        "value": "accept"
+      }
+    ]
+  },
+  {
+    "type": "button",
+    "data": [
+      {
+        "key": "layoutStyle",
+        "value": "remind"
+      },
+      {
+        "key": "text",
+        "value": "remind"
+      }
+    ]
+  },
+  {
+    "type": "stackViewSection",
+    "data": [
+      {
+        "key": "text",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "type": "button",
+    "data": [
+      {
+        "key": "layoutStyle",
+        "value": "primary"
+      },
+      {
+        "key": "text",
+        "value": "Load next screen"
+      }
+    ],
+    "action": {
+      "gesture": "touch_up_inside",
+      "type": "loadScreen",
       "data": [
-        { "key": "text", "value": "Label with style [title]" },
-        { "key": "layoutStyle", "value": "title" }
+        {
+          "key": "params",
+          "value": "ScreenD"
+        }
       ]
-    },
-    {
-      "type": "label",
+    }
+  },
+  {
+    "type": "button",
+    "data": [
+      {
+        "key": "layoutStyle",
+        "value": "primary"
+      },
+      {
+        "key": "text",
+        "value": "Present next screen"
+      }
+    ],
+    "action": {
+      "gesture": "touch_up_inside",
+      "type": "presentScreen",
       "data": [
-        { "key": "text", "value": "Label with style [value]" },
-        { "key": "layoutStyle", "value": "value" }
+        {
+          "key": "params",
+          "value": "ScreenD"
+        }
       ]
-    },
-    {
-      "type": "label",
+    }
+  },
+  {
+    "type": "button",
+    "data": [
+      {
+        "key": "layoutStyle",
+        "value": "primary"
+      },
+      {
+        "key": "text",
+        "value": "Dismiss me"
+      }
+    ],
+    "action": {
+      "gesture": "touch_up_inside",
+      "type": "dismissMe",
       "data": [
-        { "key": "text", "value": "Label with style [text]" },
-        { "key": "layoutStyle", "value": "text" }
+        {
+          "key": "params",
+          "value": ""
+        }
       ]
-    },
-    {
-      "type": "label",
-      "data": [
-        { "key": "text", "value": "Label with style [error]" },
-        { "key": "layoutStyle", "value": "error" }
-      ]
-    },
-    
-    
-    {
-      "type": "stackViewSection",
-      "data": [ { "key": "text", "value": "" } ]
-    },
-    
-    
-    {
-      "type": "button",
-      "data": [
-        { "key": "text", "value": "Button with style [primary]" },
-        { "key": "layoutStyle", "value": "primary" },
-      ]
-    },
-    {
-      "type": "button",
-      "data": [
-        { "key": "text", "value": "Button with style [secondary]" },
-        { "key": "layoutStyle", "value": "secondary" },
-      ]
-    },
-    {
-      "type": "button",
-      "data": [
-        { "key": "text", "value": "Button with style [accept]" },
-        { "key": "layoutStyle", "value": "accept" },
-      ]
-    },
-    {
-      "type": "button",
-      "data": [
-        { "key": "text", "value": "Button with style [reject]" },
-        { "key": "layoutStyle", "value": "reject" },
-      ]
-    },
-    {
-      "type": "button",
-      "data": [
-        { "key": "text", "value": "Button with style [remind]" },
-        { "key": "layoutStyle", "value": "remind" },
-      ]
-    },
-    
-    {
-      "type": "stackViewSeparator",
-      "data": [ { "key": "text", "value": "" } ]
-    },
-    
-    {
-      "type": "stackViewSeparator",
-      "data": [ { "key": "text", "value": "" } ]
-    },
-    
-    {
-      "type": "button",
-      "data": [
-        { "key": "text", "value": "Go to Screen A" },
-        { "key": "layoutStyle", "value": "primary" }
-      ]
-    },
-    {
-      "type": "button",
-      "data": [
-        { "key": "text", "value": "Go to Screen B" },
-        { "key": "layoutStyle", "value": "primary" }
-      ]
-    },
-    
-    {
-      "type": "stackViewSeparator",
-      "data": [ { "key": "text", "value": "" } ]
-    },
-    
-    {
-      "type": "stackViewSeparator",
-      "data": [ { "key": "text", "value": "" } ]
-    },
-    
-    {
-      "type": "stackViewSeparator",
-      "data": [ { "key": "text", "value": "" } ]
-    },
-    
-  ]
-}
+    }
+  }
+]

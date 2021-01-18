@@ -8,9 +8,10 @@ extension ComponentModel {
     static func loadWith(json: String?) -> [ComponentModel]? {
         guard let json = json else { return nil }
         do {
+            //let escaped = json.replace("\n", with: "")
             let data = json.data(using: .utf8, allowLossyConversion: false)!
-            let jsonData = try JSONDecoder().decode(ComponentModels.self, from: data)
-            return jsonData.results
+            let jsonData = try JSONDecoder().decode([ComponentModel].self, from: data)
+            return jsonData
         } catch {
             print("error:\(error)")
         }
