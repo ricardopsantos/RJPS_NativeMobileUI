@@ -28,16 +28,14 @@
       "type": "button",
       "data": [
         { "key": "text", "value": "Go to Screen A" },
-        { "key": "layoutStyle", "value": "primary" },
-        { "key": "touchUpInside.selector", "value": "LoadScreen.ScreenA" }
+        { "key": "layoutStyle", "value": "primary" }
       ]
     },
     {
       "type": "button",
       "data": [
         { "key": "text", "value": "Go to Screen C" },
-        { "key": "layoutStyle", "value": "primary" },
-        { "key": "touchUpInside.selector", "value": "LoadScreen.ScreenC" }
+        { "key": "layoutStyle", "value": "primary" }
       ]
     }
   ]

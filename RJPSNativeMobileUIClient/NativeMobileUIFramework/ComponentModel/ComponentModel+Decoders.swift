@@ -28,7 +28,6 @@ extension ComponentDisplayOptionsModel: Codable {
         case .listItemType: try container.encode(2, forKey: .rawValue)
         }
     }
-    
 }
 
 extension UIKitViewFactoryElementTag: Codable {
@@ -53,7 +52,5 @@ extension UIKitViewFactoryElementTag: Codable {
         case .stackViewSection: return start + 10
         }
     }
-    
-
     
 }

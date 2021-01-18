@@ -17,7 +17,7 @@ extension ComponentModel {
         return nil
     }
     
-    static func loadWith(file: String) -> [ComponentModel]? {
+    static func loadWith(file: String?) -> [ComponentModel]? {
         guard let fileContents = contentOf(jsonFile: file) else {
             return nil
         }

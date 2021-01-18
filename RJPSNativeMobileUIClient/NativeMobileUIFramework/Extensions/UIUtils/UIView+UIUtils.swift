@@ -4,6 +4,55 @@
 
 import Foundation
 import UIKit
+//
+import TinyConstraints
+import RJSLibUFAppThemes
+
+public extension UIView {
+    
+    func subViewsOf(type: UIKitViewFactoryElementTag, recursive: Bool) -> [UIView] {
+        return self.subViewsWith(tag: type.intValue, recursive: recursive)
+    }
+
+    func subViewsWith(tag: Int, recursive: Bool) -> [UIView] {
+        if recursive {
+            return self.getAllSubviews().filter { $0.tag == tag }
+        } else {
+            return self.subviews.filter { $0.tag == tag }
+        }
+    }
+
+    class func getAllSubviews<T: UIView>(from parenView: UIView) -> [T] {
+        parenView.subviews.flatMap { subView -> [T] in
+            var result = getAllSubviews(from: subView) as [T]
+            if let view = subView as? T { result.append(view) }
+            return result
+        }
+    }
+
+    class func getAllSubviews(from parenView: UIView, types: [UIView.Type]) -> [UIView] {
+        parenView.subviews.flatMap { subView -> [UIView] in
+            var result = getAllSubviews(from: subView) as [UIView]
+            for type in types {
+                if subView.classForCoder == type {
+                    result.append(subView)
+                    return result
+                }
+            }
+            return result
+        }
+    }
+
+    func getAllSubviews<T: UIView>() -> [T] { UIView.getAllSubviews(from: self) as [T] }
+
+    func get<T: UIView>(all type: T.Type) -> [T] { UIView.getAllSubviews(from: self) as [T] }
+
+    func get(all types: [UIView.Type]) -> [UIView] { UIView.getAllSubviews(from: self, types: types) }
+
+    func bringToFront() { superview?.bringSubviewToFront(self) }
+
+    func sendToBack() { superview?.sendSubviewToBack(self) }
+}
 
 public extension UIView {
 
@@ -12,7 +61,7 @@ public extension UIView {
         scrollView.addSubview(stackViewV)
         stackViewV.edgeStackViewToSuperView()
         let topBarSize: CGFloat = hasTopBar ? 40 : 0
-        let bottomBarSize: CGFloat = 0//BottomBar.backgroundHeight
+        let bottomBarSize: CGFloat = 0
         scrollView.trailingToSuperview()
         scrollView.leftToSuperview()
         scrollView.topToSuperview(offset: topBarSize, usingSafeArea: false)
@@ -56,5 +105,16 @@ public extension UIView {
         self.layoutIfNeeded()
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true
+    }
+}
+
+extension UIView {
+    func addHorizontalMargin(_ defaultMargin: CGFloat = SizesNames.size_5.cgFloat) {
+        let edgesToExclude: LayoutEdge = .init([.top, .bottom])
+        let insets = UIEdgeInsets(top: 0,
+                                  left: defaultMargin,
+                                  bottom: 0,
+                                  right: defaultMargin)
+        self.edgesToSuperview(excluding: edgesToExclude, insets: insets)
     }
 }

@@ -6,6 +6,8 @@ import UIKit
 import Foundation
 //
 import RJSLibUFBase
+import RJSLibUFAppThemes
+import TinyConstraints
 
 public extension UIView {
     static func with(model: ComponentModel, base: DynamicViewControllerProtocol) -> UIView? {
@@ -48,6 +50,12 @@ public extension UIStackView {
                     self.addSeparator(color: model.color)
                }
             })
+            
+            self.subViewsOf(type: .button, recursive: true).forEach { (some) in
+                // some.addHorizontalMargin() // No need, allready inside a stack view
+                some.height(Designables.Sizes.buttonDefaultSize.height)
+            }
+            
         }
         UIView.animate(withDuration: 0.3) {
             hide()
@@ -56,11 +64,8 @@ public extension UIStackView {
             build()
             show()
         }
-
-
     }
 }
-
 
 public extension UIButton {
     static func with(_ model: ComponentModel, base: DynamicViewControllerProtocol) -> UIButton? {
@@ -69,18 +74,15 @@ public extension UIButton {
             fatalError("Invalid model [\(model)]")
         }
         let some = UIKitFactory.button(title: model.text, style: style)
-        //if model.touchUpInsideEnabled {
-            some.isUserInteractionEnabled = true
-            some.onTouchUpInside { [base] in
-                base.viewGenericTap(some, model: model)
-            }
-        //}
+        some.isUserInteractionEnabled = true
+        some.onTouchUpInside { [base] in
+            base.viewGenericTap(some, model: model)
+        }
         return some
     }
 }
  
 public extension UIImageView {
-    
     static func with(_ model: ComponentModel, base: DynamicViewControllerProtocol) -> UIImageView? {
         guard model.type == .imageView,
               !model.url.isEmpty else {
@@ -91,22 +93,11 @@ public extension UIImageView {
 }
 
 public extension UILabel {
-    
     static func with(_ model: ComponentModel, base: DynamicViewControllerProtocol) -> UILabel? {
         guard model.type == .label,
               let style = UILabel.LayoutStyle(rawValue: model.layoutStyle) else {
             fatalError("Invalid model [\(model)]")
         }
         return UIKitFactory.label(title: model.text, style: style)
-
-        /*
-        if model.type == .label, let style = UILabel.LayoutStyle(rawValue: model.layoutStyle) {
-            self.addSub(view: UIKitFactory.label(title: model.text, style: style))
-        } else if model.type == .button, let style = UIButton.LayoutStyle(rawValue: model.layoutStyle) {
-
-            self.addSub(view: some)
-        } else if model.type == .stackViewSection {
-            self.addSection(title: model.text)
-        }*/
     }
 }

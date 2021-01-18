@@ -17,11 +17,8 @@
 		D73FB5AC25B03031004F63EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D73FB5AA25B03031004F63EE /* Main.storyboard */; };
 		D73FB5AE25B03032004F63EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D73FB5AD25B03032004F63EE /* Assets.xcassets */; };
 		D73FB5B125B03032004F63EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D73FB5AF25B03032004F63EE /* LaunchScreen.storyboard */; };
-		D777521E25B230540021ADFF /* RJSLibUFNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = D777521D25B230540021ADFF /* RJSLibUFNetworking */; };
 		D777522025B230540021ADFF /* RJSLibUFBase in Frameworks */ = {isa = PBXBuildFile; productRef = D777521F25B230540021ADFF /* RJSLibUFBase */; };
-		D777522225B230540021ADFF /* RJSLibUFALayouts in Frameworks */ = {isa = PBXBuildFile; productRef = D777522125B230540021ADFF /* RJSLibUFALayouts */; };
 		D777522425B230540021ADFF /* RJSLibUFAppThemes in Frameworks */ = {isa = PBXBuildFile; productRef = D777522325B230540021ADFF /* RJSLibUFAppThemes */; };
-		D777522625B230540021ADFF /* RJSLibUFStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D777522525B230540021ADFF /* RJSLibUFStorage */; };
 		D79E41CD25B4373E00674A2A /* typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E41CC25B4373E00674A2A /* typealias.swift */; };
 		D79E41D225B437A500674A2A /* UIColor+ComponentColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E41D125B437A500674A2A /* UIColor+ComponentColor.swift */; };
 		D79E41D625B439DA00674A2A /* LabelWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79E41D525B439DA00674A2A /* LabelWithPadding.swift */; };
@@ -39,6 +36,9 @@
 		D7AB560225B48CCA00CB21D3 /* ScreenB.json in Resources */ = {isa = PBXBuildFile; fileRef = D7AB560125B48CCA00CB21D3 /* ScreenB.json */; };
 		D7AB560725B4B0AF00CB21D3 /* UIView+ComponentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB560625B4B0AF00CB21D3 /* UIView+ComponentModel.swift */; };
 		D7AB560C25B4B5B400CB21D3 /* ScreenC.json in Resources */ = {isa = PBXBuildFile; fileRef = D7AB560B25B4B5B400CB21D3 /* ScreenC.json */; };
+		D7AB561025B4DBB200CB21D3 /* DynamicViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB560F25B4DBB200CB21D3 /* DynamicViewControllerProtocol.swift */; };
+		D7AB561725B4DC0200CB21D3 /* ActionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB561625B4DC0200CB21D3 /* ActionsManager.swift */; };
+		D7C7E9F725B58421000C90D0 /* DynamicBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C7E9F625B58421000C90D0 /* DynamicBaseVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +70,9 @@
 		D7AB560125B48CCA00CB21D3 /* ScreenB.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ScreenB.json; sourceTree = "<group>"; };
 		D7AB560625B4B0AF00CB21D3 /* UIView+ComponentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ComponentModel.swift"; sourceTree = "<group>"; };
 		D7AB560B25B4B5B400CB21D3 /* ScreenC.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ScreenC.json; sourceTree = "<group>"; };
+		D7AB560F25B4DBB200CB21D3 /* DynamicViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicViewControllerProtocol.swift; sourceTree = "<group>"; };
+		D7AB561625B4DC0200CB21D3 /* ActionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsManager.swift; sourceTree = "<group>"; };
+		D7C7E9F625B58421000C90D0 /* DynamicBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicBaseVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +81,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D73BCCC225B3BB3400897224 /* TinyConstraints in Frameworks */,
-				D777522625B230540021ADFF /* RJSLibUFStorage in Frameworks */,
 				D777522425B230540021ADFF /* RJSLibUFAppThemes in Frameworks */,
 				D777522025B230540021ADFF /* RJSLibUFBase in Frameworks */,
-				D777521E25B230540021ADFF /* RJSLibUFNetworking in Frameworks */,
-				D777522225B230540021ADFF /* RJSLibUFALayouts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,9 +155,12 @@
 		D79E41DB25B43DDE00674A2A /* NativeMobileUIFramework */ = {
 			isa = PBXGroup;
 			children = (
-				D73BCCBC25B3B9B100897224 /* UIKitFactory.swift */,
-				D79E41E325B43E6F00674A2A /* PointFree.swift */,
+				D7C7E9F925B5843F000C90D0 /* Base */,
 				D79E41CC25B4373E00674A2A /* typealias.swift */,
+				D79E41E325B43E6F00674A2A /* PointFree.swift */,
+				D73BCCBC25B3B9B100897224 /* UIKitFactory.swift */,
+				D7AB561525B4DBF700CB21D3 /* Managers */,
+				D7AB561325B4DBC800CB21D3 /* Protocols */,
 				D79E41DE25B43E4C00674A2A /* Enuns */,
 				D79E41D425B439C400674A2A /* Designables */,
 				D73BCCB325B3B73000897224 /* ComponentModel */,
@@ -203,6 +206,30 @@
 			path = SampleJSONs;
 			sourceTree = "<group>";
 		};
+		D7AB561325B4DBC800CB21D3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D7AB560F25B4DBB200CB21D3 /* DynamicViewControllerProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D7AB561525B4DBF700CB21D3 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D7AB561625B4DC0200CB21D3 /* ActionsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		D7C7E9F925B5843F000C90D0 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D7C7E9F625B58421000C90D0 /* DynamicBaseVC.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -220,11 +247,8 @@
 			);
 			name = RJPSNativeMobileUIClient;
 			packageProductDependencies = (
-				D777521D25B230540021ADFF /* RJSLibUFNetworking */,
 				D777521F25B230540021ADFF /* RJSLibUFBase */,
-				D777522125B230540021ADFF /* RJSLibUFALayouts */,
 				D777522325B230540021ADFF /* RJSLibUFAppThemes */,
-				D777522525B230540021ADFF /* RJSLibUFStorage */,
 				D73BCCC125B3BB3400897224 /* TinyConstraints */,
 			);
 			productName = RJSSecuritySampleClient;
@@ -297,6 +321,8 @@
 				D73FB5A925B03031004F63EE /* DynamicVC.swift in Sources */,
 				D79E41D225B437A500674A2A /* UIColor+ComponentColor.swift in Sources */,
 				D79E41E425B43E6F00674A2A /* PointFree.swift in Sources */,
+				D7AB561725B4DC0200CB21D3 /* ActionsManager.swift in Sources */,
+				D7C7E9F725B58421000C90D0 /* DynamicBaseVC.swift in Sources */,
 				D79E420925B4408000674A2A /* UIButton+LayoutStyle.swift in Sources */,
 				D73BCCBD25B3B9B100897224 /* UIKitFactory.swift in Sources */,
 				D73FB5A525B03031004F63EE /* AppDelegate.swift in Sources */,
@@ -304,6 +330,7 @@
 				D79E41FA25B43FCE00674A2A /* Designables.swift in Sources */,
 				D79E420525B4403500674A2A /* UIScrollView+UIUtils.swift in Sources */,
 				D79E41FF25B43FF400674A2A /* UIStackView+UIUtils.swift in Sources */,
+				D7AB561025B4DBB200CB21D3 /* DynamicViewControllerProtocol.swift in Sources */,
 				D73FB5A725B03031004F63EE /* SceneDelegate.swift in Sources */,
 				D79E41E925B43EF600674A2A /* UIView+UIUtils.swift in Sources */,
 				D79E41E025B43E5800674A2A /* FilterStrength.swift in Sources */,
@@ -521,7 +548,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ricardopsantos/RJSLibUF";
 			requirement = {
-				branch = master;
+				branch = develop;
 				kind = branch;
 			};
 		};
@@ -533,30 +560,15 @@
 			package = D73BCCC025B3BB3300897224 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
 			productName = TinyConstraints;
 		};
-		D777521D25B230540021ADFF /* RJSLibUFNetworking */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D777521C25B230540021ADFF /* XCRemoteSwiftPackageReference "RJSLibUF" */;
-			productName = RJSLibUFNetworking;
-		};
 		D777521F25B230540021ADFF /* RJSLibUFBase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D777521C25B230540021ADFF /* XCRemoteSwiftPackageReference "RJSLibUF" */;
 			productName = RJSLibUFBase;
 		};
-		D777522125B230540021ADFF /* RJSLibUFALayouts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D777521C25B230540021ADFF /* XCRemoteSwiftPackageReference "RJSLibUF" */;
-			productName = RJSLibUFALayouts;
-		};
 		D777522325B230540021ADFF /* RJSLibUFAppThemes */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D777521C25B230540021ADFF /* XCRemoteSwiftPackageReference "RJSLibUF" */;
 			productName = RJSLibUFAppThemes;
-		};
-		D777522525B230540021ADFF /* RJSLibUFStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D777521C25B230540021ADFF /* XCRemoteSwiftPackageReference "RJSLibUF" */;
-			productName = RJSLibUFStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

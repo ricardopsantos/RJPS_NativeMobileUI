@@ -23,13 +23,24 @@ extension ComponentModel {
     //
     // Only for buttons
     //
-    var touchUpInsideSelector: String? {
+    var actionType: String? {
         guard type == .button else { fatalError("Invalid call for model of type [\(type)]") }
-        return data?.filter{ $0.key == "touchUpInside.selector" }.first?.value
+        return action?.type
     }
-    //var touchUpInsideEnabled: Bool {
-    //    guard type == .button else { fatalError("Invalid call for model of type [\(type)]") }
-    //    return touchUpInsideSelector != nil
-    //}
+    
+    var actionTarget: String? {
+        guard type == .button else { fatalError("Invalid call for model of type [\(type)]") }
+        return action?.data?.filter{ $0.key == "target" }.first?.value
+    }
+    
+    var actionParams: String? {
+        guard type == .button else { fatalError("Invalid call for model of type [\(type)]") }
+        return action?.data?.filter{ $0.key == "params" }.first?.value
+    }
+    
+    var actionOptions: String? {
+        guard type == .button else { fatalError("Invalid call for model of type [\(type)]") }
+        return action?.data?.filter{ $0.key == "options" }.first?.value
+    }
 }
 

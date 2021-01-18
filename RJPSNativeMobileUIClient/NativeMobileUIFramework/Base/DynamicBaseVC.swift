@@ -5,24 +5,26 @@
 import Foundation
 import UIKit
 
-class DynamicBaseVC: UIViewController {
+public class DynamicBaseVC: UIViewController {
     
     lazy var scrollView: UIScrollView = { UIKitFactory.scrollView() }()
     lazy var stackViewVLevel1: UIStackView = { UIKitFactory.stackView(axis: .vertical) }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.addAndSetup(scrollView: scrollView, stackViewV: stackViewVLevel1, hasTopBar: true)
-        prepareLayout()
+    func base() -> DynamicViewControllerProtocol {
+        fatalError("Override me!")
     }
     
-    func screenJSON() -> String? {
+    func screenJSONFileName() -> String? {
         fatalError("Override me!")
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.addAndSetup(scrollView: scrollView, stackViewV: stackViewVLevel1, hasTopBar: true)
+        load(file: screenJSONFileName(), base: base())
     }
 
-    func prepareLayout() {
-        fatalError("Override me!")
-    }
 }
 
 //
@@ -30,7 +32,7 @@ class DynamicBaseVC: UIViewController {
 //
 
 extension DynamicBaseVC {
-    func load(file: String, base: DynamicViewControllerProtocol) {
+    func load(file: String?, base: DynamicViewControllerProtocol) {
         let models = ComponentModel.loadWith(file: file)
         stackViewVLevel1.loadWith(models: models, base: base)
     }

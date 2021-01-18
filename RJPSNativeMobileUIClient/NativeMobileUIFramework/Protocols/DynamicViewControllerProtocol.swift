@@ -3,9 +3,12 @@
 //
 
 import Foundation
+import UIKit
 
 public protocol DynamicViewControllerProtocol {
+    
+    func base() -> DynamicViewControllerProtocol
+    func screenJSONFileName() -> String?
     func viewGenericTap(_ sender: UIView, model: ComponentModel)
-    func screenJSON() -> String?
     func load(json: String?)
 }

@@ -9,9 +9,7 @@ public extension UIScrollView {
 
     func edgeScrollViewToSuperView() {
         self.edgesToSuperview()
-        if #available(iOS 11.0, *) {
-            self.contentInsetAdjustmentBehavior = .always
-        }
+        self.contentInsetAdjustmentBehavior = .always
         self.width(to: self.superview!) // NEEDS THIS!
     }
 
