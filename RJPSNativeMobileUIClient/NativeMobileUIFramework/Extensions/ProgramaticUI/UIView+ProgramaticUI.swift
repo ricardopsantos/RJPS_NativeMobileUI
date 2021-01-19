@@ -9,6 +9,12 @@ import TinyConstraints
 import RJSLibUFAppThemes
 
 public extension UIView {
+
+    func subviewsWith(componentID: String) -> [UIView] {
+        return self.allSubviews().filter {
+            return $0.componentID != nil && $0.componentID == componentID
+        }
+    }
     
     func subViewsOf(type: UIKitViewFactoryElementTag, recursive: Bool) -> [UIView] {
         return self.subViewsWith(tag: type.intValue, recursive: recursive)

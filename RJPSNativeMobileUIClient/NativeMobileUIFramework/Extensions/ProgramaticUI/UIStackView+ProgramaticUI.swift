@@ -16,8 +16,8 @@ public extension UIStackView {
     }
     
     func addSection(title: String, font: AppFonts.Styles = .paragraphMedium, color: ColorName = .primary, barSize: CGFloat = 1) {
-        addSeparator()
-        addSeparator(withSize: barSize, color: color.rawValue)
+        _ = addSeparator()
+        _ = addSeparator(withSize: barSize, color: color.rawValue)
         let label = UILabel()
         label.text = title
         label.font = font.rawValue
@@ -25,7 +25,7 @@ public extension UIStackView {
         label.textAlignment = .center
         label.textColor = color.rawValue
         addSub(view: label)
-        addSeparator()
+        _ = addSeparator()
     }
     
     func add(_ view: UIView) {
@@ -42,7 +42,6 @@ public extension UIStackView {
     
     // If value=0, will use as separator size will (look) be twice the current
     // stack view separator (trust me)
-    @discardableResult
     func addSeparator(withSize value: CGFloat=0, color: UIColor? = .clear, tag: Int? = nil) -> UIView {
         let separator = UIView()
         separator.backgroundColor = color ?? .clear

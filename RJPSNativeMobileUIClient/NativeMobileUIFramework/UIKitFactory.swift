@@ -8,63 +8,102 @@ import RJSLibUFBase
 import RJSLibUFAppThemes
 import TinyConstraints
 
-public enum UIKitViewFactoryElementTag: String {
-    // Simple
-    case view
-    case button
-    case scrollView
-    case stackView
-    case imageView
-    case textField
-    case label
-    
-    case titleAndValue
-    case stackViewSection
-    case stackViewSeparator    
-}
-
-extension UIKitViewFactoryElementTag {
-    var stringValue: String {  self.rawValue }
-    
-    var intValue: Int {
-        let start = 1000
-        switch self {
-        case .view: return start + 1
-        case .button: return start + 2
-        case .scrollView: return start + 3
-        case .stackView: return start + 4
-        case .imageView: return start + 5
-        case .textField: return start + 6
-        case .label: return start + 7
-        case .stackViewSeparator: return start + 8
-        case .titleAndValue: return start + 9
-        case .stackViewSection: return start + 10
-        }
-    }
-    
-}
-
 public struct UIKitFactory {
     private init() {}
 
-    public static func button(title: String = "", style: UIButton.LayoutStyle) -> UIButton {
+    static func view(model: ComponentModel, base: DynamicViewControllerProtocol) -> UIView? {
+        switch model.type {
+        case .view: fatalError("Not implemented")
+        case .button: return UIKitFactory.button(model, base: base)
+        case .scrollView: fatalError("Not implemented")
+        case .stackView: fatalError("Not implemented")
+        case .imageView: return UIKitFactory.imageView(model, base: base)
+        case .textField: return UIKitFactory.textField(model, base: base)
+        case .label: return UIKitFactory.label(model, base: base)
+        case .stackViewSeparator: return nil
+        case .titleAndValue: fatalError("Not implemented")
+        case .stackViewSection: return nil
+        }
+    }
+    
+    static func button(_ model: ComponentModel,
+                       base: DynamicViewControllerProtocol) -> UIButton? {
+        guard model.type == .button,
+              let style = UIButton.LayoutStyle(rawValue: model.layoutStyle) else {
+            fatalError("Invalid model [\(model)]")
+        }
+        let some = UIKitFactory.button(id: model.id, title: model.text, style: style)
+        some.isUserInteractionEnabled = true
+        some.onTouchUpInside { [base] in
+            base.viewGenericTap(some, model: model)
+        }
+        return some
+    }
+    
+    public static func button(id: String?,
+                              title: String = "",
+                              style: UIButton.LayoutStyle) -> UIButton {
         let some = UIButton()
+        if let id = id {
+            some.set(componentID: id)
+        }
         some.setTitleForAllStates(title)
-        some.tag =  UIKitViewFactoryElementTag.button.intValue
+        some.tag = UIKitViewFactoryElementTag.button.intValue
         some.setTitleForAllStates(title)
         some.layoutStyle = style
         return some
     }
 
-    public static func textField(title: String = "") -> UITextField {
+    static func textField(_ model: ComponentModel,
+                          base: DynamicViewControllerProtocol) -> UITextField? {
+        guard model.type == .textField else {
+            fatalError("Invalid model [\(model)]")
+        }
+        let some = UIKitFactory.textField(id: model.id,
+                                          title: model.text,
+                                          placeholder: model.textPlaceHolder,
+                                          isSecureTextEntry: model.textIsSecured)
+        return some
+    }
+    
+    public static func textField(id: String?,
+                                 title: String,
+                                 placeholder: String = "",
+                                 isSecureTextEntry: Bool = false) -> UITextField {
+        let baseLabel = UILabel()
+        baseLabel.layoutStyle = .value
         let some = UITextField()
+        if let id = id {
+            some.set(componentID: id)
+        }
         some.text = title
+        some.textColor = baseLabel.textColor
+        some.font = baseLabel.font
+        some.backgroundColor = ColorName.primary.color.withAlphaComponent(FadeType.superHeavy.rawValue)
         some.tag = UIKitViewFactoryElementTag.textField.intValue
+        some.placeholder = placeholder
+        some.layer.sublayerTransform = CATransform3DMakeTranslation(SizesNames.size_3.cgFloat, 0, 0)
+        some.isSecureTextEntry = isSecureTextEntry
+        some.addCorner(radius: 5)
         return some
     }
 
-    public static func imageView(image: UIImage? = nil, imageURL: String? = nil) -> UIImageView {
+    static func imageView(_ model: ComponentModel,
+                          base: DynamicViewControllerProtocol) -> UIImageView? {
+        guard model.type == .imageView,
+              !model.url.isEmpty else {
+            fatalError("Invalid model [\(model)]")
+        }
+        return UIKitFactory.imageView(id: model.id, imageURL: model.url)
+    }
+    
+    public static func imageView(id: String?,
+                                 image: UIImage? = nil,
+                                 imageURL: String? = nil) -> UIImageView {
         let some = UIImageView()
+        if let id = id {
+            some.set(componentID: id)
+        }
         some.tag =  UIKitViewFactoryElementTag.imageView.intValue
         if image != nil {
             some.image = image
@@ -79,13 +118,31 @@ public struct UIKitFactory {
         return some
     }
     
-    public static func label(title: String = "",
-                             style: UILabel.LayoutStyle) -> UILabel {
+    static func label(_ model: ComponentModel,
+                      base: DynamicViewControllerProtocol) -> UILabel? {
+        guard model.type == .label,
+              let style = UILabel.LayoutStyle(rawValue: model.layoutStyle) else {
+            fatalError("Invalid model [\(model)]")
+        }
+        return UIKitFactory.label(id: model.id,
+                                  title: model.text,
+                                  style: style,
+                                  textAlignment: model.textAlignement)
+    }
+    
+    public static func label(id: String?,
+                             title: String = "",
+                             style: UILabel.LayoutStyle,
+                             textAlignment: NSTextAlignment = .justified) -> UILabel {
         let some = UILabel()
+        if let id = id {
+            some.set(componentID: id)
+        }
         some.text = title
         some.numberOfLines = 0
         some.tag =  UIKitViewFactoryElementTag.label.intValue
         some.layoutStyle = style
+        some.textAlignment = textAlignment
         some.addShadow()
         return some
     }
@@ -110,6 +167,7 @@ public struct UIKitFactory {
                             bottom: topAndBottomSpacing,
                             right: Designables.Sizes.Margins.defaultMargin)
     }
+    
     public static var stackViewDefaultSpacing: CGFloat {
         return Designables.Sizes.Margins.defaultMargin / 2
     }
@@ -150,21 +208,6 @@ public struct UIKitFactory {
         return some
     }
     
-
-}
-
-extension UIKitFactory {
-    public static func labelWithPadding(padding: UIEdgeInsets? = nil,
-                                        title: String = "",
-                                        style: UILabel.LayoutStyle) -> UILabelWithPadding {
-        let some = UILabelWithPadding(padding: padding, text: title)
-        some.numberOfLines = 0
-        some.tag =  UIKitViewFactoryElementTag.label.intValue
-        some.addShadow()
-        some.layoutStyle = style
-        some.text = title
-        return some
-    }
 
 }
 

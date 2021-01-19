@@ -8,31 +8,45 @@ import UIKit
 
 extension ComponentModel {
     
-    //
-    // Generic
-    //
     var text: String { data?.filter{ $0.key == .text }.first?.value ?? "" }
+    
+    var textPlaceHolder: String { data?.filter{ $0.key == .textPlaceHolder }.first?.value ?? "" }
+    
+    var textIsSecured: Bool {
+        if let value = data?.filter({ $0.key == .textIsSecured }).first?.value {
+            return Bool(value) ?? false
+        }
+        return false
+    }
+
     var layoutStyle: String { data?.filter{ $0.key == .layoutStyle }.first?.value ?? "" }
+    
     var url: String { data?.filter{ $0.key == .url }.first?.value ?? "" }
+    
     var color: UIColor? {
-        if let color = data?.filter({ $0.key == .color }).first?.value {
-            return UIColor.colorFromRGBString(color)
+        if let value = data?.filter({ $0.key == .color }).first?.value {
+            return UIColor.colorFromRGBString(value)
         }
         return nil
     }
-
-    //
-    // Only for buttons
-    //
+    
+    var textAlignement: NSTextAlignment {
+        guard let value = data?.filter({ $0.key == .textAlignment }).first?.value,
+              let rawValue = Int(value),
+              let result = NSTextAlignment(rawValue: rawValue) else {
+            return .justified
+        }
+        return result
+    }
 }
 
-extension ComponentActionModel {
-    
-    var params: String? {
-        return self.data?.filter{ $0.key == .params }.first?.value
+
+extension UIView {
+    var componentID: String? {
+        self.accessibilityIdentifier
     }
     
-    var options: String? {
-        return self.data?.filter{ $0.key == .options }.first?.value
+    func set(componentID: String) {
+        self.accessibilityIdentifier = componentID
     }
 }

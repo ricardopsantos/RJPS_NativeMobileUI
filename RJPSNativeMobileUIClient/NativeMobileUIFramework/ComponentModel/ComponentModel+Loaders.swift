@@ -8,7 +8,6 @@ extension ComponentModel {
     static func loadWith(json: String?) -> [ComponentModel]? {
         guard let json = json else { return nil }
         do {
-            //let escaped = json.replace("\n", with: "")
             let data = json.data(using: .utf8, allowLossyConversion: false)!
             let jsonData = try JSONDecoder().decode([ComponentModel].self, from: data)
             return jsonData
@@ -25,3 +24,5 @@ extension ComponentModel {
         return loadWith(json: fileContents)
     }
 }
+
+

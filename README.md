@@ -18,17 +18,23 @@ Inspired by these words I read at [Implementing native UI from scratch using JSO
 
 ## Current capabilities
 
-✅ Add elements on a vertical layout.
+✅ Adding sections, spaces, horizontal lines, labels, buttons, images and input fields on a inifinite vertical layout.
 
-✅ Add elements with properties and styles.
+✅ Labels and buttons support properties and styles (predefined styles list).
 
-✅ Elements support user interactions (now, only for buttons).
+✅ Buttons and TextFields react to user interactions.
 
-✅ Added push and dismiss screen support.
+✅ Added push new screens (and dismiss) support.
+
+✅ Interact with elements using his id (defined on the JSON)
 
 ❌ Add relative/horizontal layout options (on roadmap)
 
-❌ Add input fields support (on roadmap)
+## Version 1.5.0
+
+* Added input fields support.
+
+* Added capabilitie do interact with elements using his id (defined on the JSON)
 
 ## Version 1.4.0
 
@@ -40,7 +46,94 @@ Inspired by these words I read at [Implementing native UI from scratch using JSO
 
 ![image](Images/version1.4.0.gif)
 
-## JSON Sampes
+## Sample Screen JSON
+
+```
+[
+  {
+    "type": "stackViewSection",
+    "data": [ { "key": "text", "value": "My Profile" } ]
+  },
+  {
+    "type": "imageView",
+    "data": [
+      { "key": "url", "value": "https:\\/\\/media-exp1.licdn.com\\/dms\\/image\\/C4E03AQHpQtIamtJZPA\\/profile-displayphoto-shrink_800_800\\/0\\/1601550428198?e=1616630400&v=beta&t=P8OwQSHL0V18A-NjlYwAMAKqlfXgLzNnIusoAyfTwP4" }
+    ]
+  },
+  {
+    "type": "stackViewSeparator",
+    "data": [ { "key": "height", "value": "0" } ]
+  },
+  {
+    "type": "label",
+    "data": [
+      { "key": "layoutStyle", "value": "title" },
+      { "key": "text", "value": "Ricardo Santos" },
+      { "key": "textAlignment", "value": "1" }
+    ]
+  },
+  {
+    "type": "label",
+    "data": [
+      { "key": "layoutStyle", "value": "value" },
+      { "key": "text", "value": "Every line of code represents and ethical and moral decision" },
+      { "key": "textAlignment", "value": "1" }
+    ]
+  },
+  {
+    "type": "stackViewSection",
+    "data": [ { "key": "text", "value": "Contacts" } ]
+  },
+  {
+    "type": "button",
+    "data": [
+      { "key": "layoutStyle", "value": "secondary" },
+      { "key": "text", "value": "My LinkedIn" }
+    ],
+    "action": {
+      "gesture": "touch_up_inside",
+      "id": "action_open_url",
+      "data": [ { "key": "params", "value": "https:\\/\\/www.linkedin.com\\/in\\/ricardopsantos\\/" } ],
+      "type": "openURL"
+    }
+  },
+  {
+    "type": "button",
+    "data": [
+      { "key": "layoutStyle", "value": "secondary" },
+      { "key": "text", "value": "Email me!" }
+    ],
+    "action": {
+      "gesture": "touch_up_inside",
+      "id": "action_open_url",
+      "data": [ { "key": "params", "value": "mailto:abc@example.com?subject=Feedback" } ],
+      "type": "openURL"
+    }
+  },
+  {
+    "type": "stackViewSection",
+    "data": [ { "key": "text", "value": "" } ]
+  },
+  {
+    "type": "button",
+    "data": [
+      { "key": "layoutStyle", "value": "primary" },
+      { "key": "text", "value": "Tap to check all components!" }
+    ],
+    "action": {
+      "gesture": "touch_up_inside",
+      "id": "action_load_ScreenDesignables",
+      "data": [ { "key": "params", "value": "ScreenDesignables" } ],
+      "type": "pushScreen"
+    }
+  },
+  {
+    "type": "stackViewSeparator",
+    "data": [ { "key": "height", "value": "0" } ]
+  }
+]
+```
+## UI fields JSON samples
 
 __Sections__
 
@@ -66,15 +159,48 @@ __Vertical Space__
 }
 ```
 
-__UILabel__
+__ILabels__
 
 ```json
 {
   "type": "label",
-    "data": [
-      {"key": "text", "value": "I'm a title"},
-      {"key": "layoutStyle", "value": "title" }
-    ]
+  "data": [
+    {"key": "text", "value": "some text"},
+    {"key": "layoutStyle", "value": "title" }
+  ]
+}
+```
+
+```json
+{
+  "id": "label_user_validation",
+  "type": "label",
+  "data": [
+    {"key": "text", "some text"},
+    {"key": "layoutStyle", "value": "value" }
+    {"key": "textAlignment", "value": "1" }
+  ]
+}
+```
+
+__Input field__
+
+```json
+{
+  "type": "textField",
+  "data": [{"key": "text", "some text"}]
+}
+```
+
+```json
+{
+  "id": "textField_password",
+  "type": "textField",
+  "data": [
+    {"key": "text", ""},
+    {"key": "textPlaceHolder", "value": "Insert your passord" },
+    {"key": "textIsSecured", "value": "true" }
+  ]
 }
 ```
 
@@ -83,7 +209,8 @@ __UIImageView__
 ```json
 {
   "type": "imageView",
-  "data": [{"key": "url", "value": "https://cdn.vox-cdn.com/thumbor/zEZJzZFEXm23z-Iw9ESls2jYFYA=/89x0:1511x800/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/55717463/google_ai_photography_street_view_2.0.jpg"}]
+  "data": [
+    {"key": "url", "value": "https://cdn.vox-cdn.com/thumbor/zEZJzZFEXm23z-Iw9ESls2jYFYA=/89x0:1511x800/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/55717463/google_ai_photography_street_view_2.0.jpg"}]
 }
 ```
 
@@ -102,7 +229,6 @@ __Button__
     "data": [{"key": "params", "value": "ScreenC"}]}
   }
 ```
-
 
 ## Old versions
 

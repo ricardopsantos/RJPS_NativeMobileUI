@@ -6,6 +6,44 @@ import Foundation
 import RJSLibUFBase
 import UIKit
 
+extension ComponentActionModel {
+    
+    static func actionDismiss() -> ComponentActionModel {
+        ComponentActionModel(id: "action_dismiss", gesture: .touch_up_inside, type: .dismissMe, data: nil)
+    }
+    
+    static func actionLoad(sreeen: AppSreens) -> ComponentActionModel {
+        return action(id: "action_load_\(sreeen.rawValue)", sreeen: sreeen, type: .loadScreen, url: nil)
+    }
+    
+    static func actionPush(sreeen: AppSreens) -> ComponentActionModel {
+        return action(id: "action_load_\(sreeen.rawValue)", sreeen: sreeen, type: .pushScreen, url: nil)
+    }
+    
+    static func actionPresent(sreeen: AppSreens) -> ComponentActionModel {
+        return action(id: "action_load_\(sreeen.rawValue)", sreeen: sreeen, type: .presentScreen, url: nil)
+    }
+    
+    static func actionOpen(url: String) -> ComponentActionModel {
+        return action(id: "action_open_url", sreeen: nil, type: .openURL, url: url)
+    }
+    
+    private static func action(id: String, sreeen: AppSreens?, type: ComponentActionModel.ActionType, url: String?) -> ComponentActionModel {
+        var data: [ComponentDataModel] = []
+        if sreeen != nil {
+            data.append(ComponentDataModel(key: .params, value: sreeen!.JSONFileName))
+        }
+        if url != nil {
+            data.append(ComponentDataModel(key: .params, value: url!))
+        }
+        let action: ComponentActionModel = ComponentActionModel(id: id,
+                                                                gesture: .touch_up_inside,
+                                                                type: type,
+                                                                data: data)
+        return action
+    }
+}
+
 extension ComponentModel {
    
     private static func spacer(height: Int = 0) -> ComponentModel {
@@ -14,6 +52,22 @@ extension ComponentModel {
                               type: UIKitViewFactoryElementTag.stackViewSeparator,
                               displayOptions: nil,
                               data: [height],
+                              action: nil)
+    }
+    
+    private static func textField(title: String, _ placeHolder: String, _ isSecured: Bool? = nil, _ identifier: String?) -> ComponentModel {
+        let text = ComponentDataModel(key: .text, value: title)
+        let placeHolder = ComponentDataModel(key: .textPlaceHolder, value: placeHolder)
+        var data: [ComponentDataModel] = []
+        data.append(text)
+        data.append(placeHolder)
+        if isSecured != nil {
+            data.append(ComponentDataModel(key: .textIsSecured, value: "\(isSecured!)"))
+        }
+        return ComponentModel(id: identifier,
+                              type: UIKitViewFactoryElementTag.textField,
+                              displayOptions: nil,
+                              data: data,
                               action: nil)
     }
     
@@ -26,13 +80,22 @@ extension ComponentModel {
                               action: nil)
     }
     
-    private static func label(_ layout: UILabel.LayoutStyle, _ title: String) -> ComponentModel {
-        let layout = ComponentDataModel(key: .layoutStyle, value: layout.rawValue)
-        let text = ComponentDataModel(key: .text, value: title)
-        return ComponentModel(id: nil,
+    private static func label(_ layout: UILabel.LayoutStyle,
+                              _ title: String,
+                              _ textAlignment: NSTextAlignment?,
+                              _ identifier: String? = nil) -> ComponentModel {
+        let layout    = ComponentDataModel(key: .layoutStyle, value: layout.rawValue)
+        let text      = ComponentDataModel(key: .text, value: title)
+        var data: [ComponentDataModel] = []
+        data.append(layout)
+        data.append(text)
+        if let textAlignment = textAlignment {
+            data.append(ComponentDataModel(key: .textAlignment, value: "\(textAlignment.rawValue)"))
+        }
+        return ComponentModel(id: identifier,
                               type: UIKitViewFactoryElementTag.label,
                               displayOptions: nil,
-                              data: [text, layout],
+                              data: data,
                               action: nil)
     }
     
@@ -45,14 +108,8 @@ extension ComponentModel {
                               action: nil)
     }
     
-    private static func actionLoad(sreeen: String, type: ComponentActionModel.ActionType) -> ComponentActionModel {
-        let params = ComponentDataModel(key: .params, value: sreeen)
-        let action: ComponentActionModel = ComponentActionModel(id: nil,
-                                                                gesture: .touch_up_inside,
-                                                                type: type,
-                                                                data: [params])
-        return action
-    }
+
+    
     private static func button(_ layout: UIButton.LayoutStyle, _ title: String, _ action: ComponentActionModel? = nil) -> ComponentModel {
         let layout = ComponentDataModel(key: .layoutStyle, value: layout.rawValue)
         let text   = ComponentDataModel(key: .text, value: title)
@@ -65,81 +122,80 @@ extension ComponentModel {
                               action: action)
     }
     
-    static var screenA : [ComponentModel] {
-        let nextScreen = "ScreenB"
-        let result =  [
-            section(title: "Images..."),
-            imageView(url: "https://cdn.vox-cdn.com/thumbor/zEZJzZFEXm23z-Iw9ESls2jYFYA=/89x0:1511x800/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/55717463/google_ai_photography_street_view_2.0.jpg"),
-            section(title: "...and section support!"),
-            spacer(),
-            button(.primary, "Load next screen", actionLoad(sreeen: nextScreen, type: .loadScreen)),
-            button(.primary, "Present next screen", actionLoad(sreeen: nextScreen, type: .presentScreen)),
-        ]
-        
-        return result
-    }
-    
-    static var screenB : [ComponentModel] {
-        let nextScreen = "ScreenC"
-        let result =  [
-            section(title: "Diferent type of labels support..."),
-            label(.title, "title"),
-            label(.value, "value"),
-            label(.text, "text"),
-            label(.error, "error"),
-            section(title: ""),
-            button(.primary, "Load next screen", actionLoad(sreeen: nextScreen, type: .loadScreen)),
-            button(.primary, "Present next screen", actionLoad(sreeen: nextScreen, type: .presentScreen)),
-            button(.primary, "Dismiss me", actionLoad(sreeen: "", type: .dismissMe)),
-        ]
-        
-        return result
-    }
-    
-    static var screenC : [ComponentModel] {
-        let nextScreen = "ScreenD"
-        let result =  [
-            section(title: "Diferent type of buttons support..."),
-            button(.primary, "primary"),
-            button(.secondary, "secondary"),
-            button(.accept, "accept"),
-            button(.reject, "reject"),
-            button(.accept, "accept"),
-            button(.remind, "remind"),
-            section(title: ""),
-            button(.primary, "Load next screen", actionLoad(sreeen: nextScreen, type: .loadScreen)),
-            button(.primary, "Present next screen", actionLoad(sreeen: nextScreen, type: .presentScreen)),
-            button(.primary, "Dismiss me", actionLoad(sreeen: "", type: .dismissMe)),
-        ]
-        
-        return result
-    }
-    
-    static var screenD : [ComponentModel] {
+    static var screenDesignables : [ComponentModel] {
         
         let result =  [
-            section(title: "Title"),
+            section(title: "I'm a section title!"),
+
+            section(title: "Images loaded via url"),
 
             imageView(url: "https://cdn.vox-cdn.com/thumbor/zEZJzZFEXm23z-Iw9ESls2jYFYA=/89x0:1511x800/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/55717463/google_ai_photography_street_view_2.0.jpg"),
-            section(title: ""),
+            
+            section(title: "Label styles..."),
 
-            label(.title, "title title title title title"),
-            label(.value, "value value value value value"),
-            label(.text, "text text text text text text"),
-            label(.error, "error error error error error error"),
+            label(.title, "Im a label with style [title]", nil),
+            label(.value, "Im a label with style [value]", nil),
+            label(.text, "Im a label with style [text]", nil),
+            label(.error, "Im a label with style [error]", nil),
 
-            section(title: ""),
+            section(title: "Text alignment..."),
 
-            button(.primary, "primary"),
-            button(.secondary, "secondary"),
-            button(.accept, "accept"),
-            button(.reject, "reject"),
-            button(.accept, "accept"),
-            button(.remind, "remind"),
+            label(.text, "Style [text] and align [center]", .center),
+            label(.text, "Style [text] and align [left]", .left),
+            label(.text, "Style [text] and align [center]", .right),
+            label(.text, "Style [text] and align [justified]", .justified),
+
+            section(title: "Button styles..."),
+
+            button(.primary, "Im a button with style [primary]"),
+            button(.secondary, "Im a button with style [secondary]"),
+            button(.accept, "Im a button with style [accept]"),
+            button(.reject, "Im a button with style [reject]"),
+            button(.remind, "Im a button with style [remind]"),
           
+            section(title: "Textfields..."),
+
+            textField(title: "", "User", false, "\(UIKitViewFactoryElementTag.textField)_user"),
+            textField(title: "", "Password", true, "\(UIKitViewFactoryElementTag.textField)_password"),
+            label(.text, "", nil, "\(UIKitViewFactoryElementTag.label)_user_validation"),
+
+            section(title: "Navigation..."),
+
+            button(.primary, "Infinite loop?", ComponentActionModel.actionPush(sreeen: .screenProfile)),
+            button(.primary, "Open url", ComponentActionModel.actionOpen(url: "https://www.google.com/")),
+            button(.secondary, "Dismiss me", ComponentActionModel.actionDismiss()),
+
+            spacer(),
+            spacer(),
+            spacer(),
+
+        ]
+        
+        return result
+    }
+    
+    static var screenProfile : [ComponentModel] {
+        
+        let result =  [
+            section(title: "My Profile"),
+
+            imageView(url: "https://media-exp1.licdn.com/dms/image/C4E03AQHpQtIamtJZPA/profile-displayphoto-shrink_800_800/0/1601550428198?e=1616630400&v=beta&t=P8OwQSHL0V18A-NjlYwAMAKqlfXgLzNnIusoAyfTwP4"),
+
+            spacer(),
+            
+            label(.title, "Ricardo Santos", .center),
+            label(.value, "Every line of code represents and ethical and moral decision", .center),
+
+            section(title: "Contacts"),
+
+
+            button(.secondary, "My LinkedIn", ComponentActionModel.actionOpen(url: "https://www.linkedin.com/in/ricardopsantos/")),
+            button(.secondary, "Email me!", ComponentActionModel.actionOpen(url: "mailto:abc@example.com?subject=Feedback")),
+            //button(.secondary, "Dismiss me", ComponentActionModel.actionDismiss()),
+            
             section(title: ""),
 
-            button(.primary, "Dismiss me", actionLoad(sreeen: "", type: .dismissMe)),
+            button(.primary, "Tap to check all components!", ComponentActionModel.actionPush(sreeen: .ScreenDesignables)),
 
             spacer(),
             spacer(),
