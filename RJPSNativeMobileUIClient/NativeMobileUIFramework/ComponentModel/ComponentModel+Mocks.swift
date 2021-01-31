@@ -5,6 +5,8 @@
 import Foundation
 import RJSLibUFBase
 import UIKit
+//
+import RJSLibUFAppThemes
 
 extension ComponentActionModel {
     
@@ -80,7 +82,7 @@ extension ComponentModel {
                               action: nil)
     }
     
-    private static func label(_ layout: UILabel.LayoutStyle,
+    private static func label(_ layout: LabelStyle,
                               _ title: String,
                               _ textAlignment: NSTextAlignment?,
                               _ identifier: String? = nil) -> ComponentModel {
@@ -110,7 +112,9 @@ extension ComponentModel {
     
 
     
-    private static func button(_ layout: UIButton.LayoutStyle, _ title: String, _ action: ComponentActionModel? = nil) -> ComponentModel {
+    private static func button(_ layout: ButtontStyle,
+                               _ title: String,
+                               _ action: ComponentActionModel? = nil) -> ComponentModel {
         let layout = ComponentDataModel(key: .layoutStyle, value: layout.rawValue)
         let text   = ComponentDataModel(key: .text, value: title)
         
@@ -127,10 +131,9 @@ extension ComponentModel {
         let result =  [
             section(title: "I'm a section title!"),
 
-            section(title: "Images loaded via url"),
-
             imageView(url: "https://cdn.vox-cdn.com/thumbor/zEZJzZFEXm23z-Iw9ESls2jYFYA=/89x0:1511x800/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/55717463/google_ai_photography_street_view_2.0.jpg"),
-            
+            label(.text, "(This image loaded via url)", .center),
+
             section(title: "Label styles..."),
 
             label(.title, "Im a label with style [title]", nil),

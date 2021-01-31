@@ -27,19 +27,7 @@ public extension UIStackView {
         addSub(view: label)
         _ = addSeparator()
     }
-    
-    func add(_ view: UIView) {
-        if view.superview == nil {
-            self.addArrangedSubview(view)
-            view.setNeedsLayout()
-            view.layoutIfNeeded()
-        }
-    }
-    
-    func addSub(view: UIView) {
-        self.add(view)
-    }
-    
+
     // If value=0, will use as separator size will (look) be twice the current
     // stack view separator (trust me)
     func addSeparator(withSize value: CGFloat=0, color: UIColor? = .clear, tag: Int? = nil) -> UIView {

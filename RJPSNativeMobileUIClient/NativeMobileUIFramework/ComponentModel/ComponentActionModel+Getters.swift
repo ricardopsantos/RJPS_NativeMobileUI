@@ -28,10 +28,6 @@ extension ComponentActionModel {
         return self.data?.filter{ $0.key == .params }.first?.value
     }
     
-    //var params: String? {
-    //    return self.data?.filter{ $0.key == .params }.first?.value
-    //}
-    
     var options: String? {
         return self.data?.filter{ $0.key == .options }.first?.value
     }

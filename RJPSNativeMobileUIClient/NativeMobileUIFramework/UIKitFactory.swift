@@ -4,6 +4,7 @@
 
 import Foundation
 import UIKit
+//
 import RJSLibUFBase
 import RJSLibUFAppThemes
 import TinyConstraints
@@ -29,7 +30,7 @@ public struct UIKitFactory {
     static func button(_ model: ComponentModel,
                        base: DynamicViewControllerProtocol) -> UIButton? {
         guard model.type == .button,
-              let style = UIButton.LayoutStyle(rawValue: model.layoutStyle) else {
+              let style = ButtontStyle(rawValue: model.layoutStyle) else {
             fatalError("Invalid model [\(model)]")
         }
         let some = UIKitFactory.button(id: model.id, title: model.text, style: style)
@@ -42,7 +43,7 @@ public struct UIKitFactory {
     
     public static func button(id: String?,
                               title: String = "",
-                              style: UIButton.LayoutStyle) -> UIButton {
+                              style: ButtontStyle) -> UIButton {
         let some = UIButton()
         if let id = id {
             some.set(componentID: id)
@@ -121,7 +122,7 @@ public struct UIKitFactory {
     static func label(_ model: ComponentModel,
                       base: DynamicViewControllerProtocol) -> UILabel? {
         guard model.type == .label,
-              let style = UILabel.LayoutStyle(rawValue: model.layoutStyle) else {
+              let style = LabelStyle(rawValue: model.layoutStyle) else {
             fatalError("Invalid model [\(model)]")
         }
         return UIKitFactory.label(id: model.id,
@@ -132,7 +133,7 @@ public struct UIKitFactory {
     
     public static func label(id: String?,
                              title: String = "",
-                             style: UILabel.LayoutStyle,
+                             style: LabelStyle,
                              textAlignment: NSTextAlignment = .justified) -> UILabel {
         let some = UILabel()
         if let id = id {
