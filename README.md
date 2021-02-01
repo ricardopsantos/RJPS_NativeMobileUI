@@ -159,7 +159,7 @@ __Vertical Space__
 }
 ```
 
-__ILabels__
+__Labels__
 
 ```json
 {
